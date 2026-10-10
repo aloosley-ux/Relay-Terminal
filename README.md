@@ -4,6 +4,10 @@
 
 **Windows · Tauri 2 · Rust/ConPTY · React/TypeScript · xterm.js · v2.0**
 
+[**Download Relay Terminal 2.0 for Windows**](https://github.com/aloosley-ux/Relay-Terminal/releases/tag/v2.0.0) · [Release notes](RELEASE-NOTES-2.0.md) · [Test results](TEST-REPORT-2.0.md)
+
+![Relay 2.0 showing local project tasks in its Windows desktop workspace](docs/media/relay-projects.png)
+
 Relay started as a personal replacement for juggling ConEmu tabs, project folders, commands and local development services. Instead of building another dashboard that *looks* like a terminal, it runs actual PowerShell sessions and gives them a workspace.
 
 It's a working Windows desktop application, **not a commercial terminal replacement**, not a cloud agent platform, and not finished software pretending to be finished.
