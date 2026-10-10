@@ -1,0 +1,22 @@
+import {chromium} from 'playwright';
+import assert from 'node:assert/strict';
+const b=await chromium.connectOverCDP('http://127.0.0.1:9225');
+const p=b.contexts()[0].pages().find(p=>p.url().includes('tauri.localhost'));
+await p.locator('.statusbar').getByText('Ready',{exact:true}).waitFor();
+if(await p.getByRole('dialog').count()) {await p.keyboard.press('Escape');await p.getByRole('dialog').waitFor({state:'hidden'});}
+await p.keyboard.press('Control+Shift+l');
+await p.getByLabel('Folder path',{exact:true}).fill('C:\\AI');
+await p.getByRole('button',{name:'Go to folder path',exact:true}).click();
+await p.waitForTimeout(150);
+assert.equal(await p.getByLabel('Folder path',{exact:true}).inputValue(),'C:\\AI');
+assert.equal(await p.locator('.folder-selection>span').innerText(),'C:\\AI');
+await p.getByLabel('Search folders',{exact:true}).fill('Cortana');
+await p.waitForTimeout(80);
+await p.screenshot({path:'artifacts/screenshots/relay-folder-browser.png'});
+await p.getByRole('dialog').getByRole('button',{name:'Cortana C:\\AI\\Cortana',exact:true}).click();
+assert.equal(await p.locator('.folder-selection>span').innerText(),'C:\\AI\\Cortana');
+await p.getByRole('button',{name:'Use in this tab',exact:true}).click();
+await p.getByRole('dialog').waitFor({state:'hidden'});
+await p.waitForFunction(()=>document.querySelector('.breadcrumbs')?.getAttribute('title')==='C:\\AI\\Cortana');
+console.log('PASS folder navigation regression: asynchronous listing preserves edited address; current-tab directory changed to discovered Cortana.');
+await b.close();

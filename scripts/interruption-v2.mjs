@@ -1,0 +1,12 @@
+import fs from 'node:fs';
+let app=fs.readFileSync('src/App.tsx','utf8');
+const previous="state: patch.status === 'ready' && patch.lastSuccess !== false ? 'complete' : 'failed'";
+if(!app.includes(previous))throw new Error('Task lifecycle replacement missing');
+app=app.replace(previous,"state: t.interrupted ? 'interrupted' : patch.status === 'ready' && patch.lastSuccess !== false ? 'complete' : 'failed'");
+app=app.replace("  const launchTask = async", "  const stopTask = (key: string) => { setTasks(prev => prev.map(t => t.key === key && t.state === 'running' ? { ...t, interrupted: true } : t)); records.get(key)?.write('\\x03'); };\n  const launchTask = async");
+app=app.replace("stop={key => records.get(key)?.write('\\x03')}","stop={stopTask}");
+app=app.replace("onClick={() => records.get(active)?.write('\\x03')}","onClick={() => stopTask(active)}");
+fs.writeFileSync('src/App.tsx',app);
+let wb=fs.readFileSync('src/Workbench.tsx','utf8');
+wb=wb.replace("const taskState = (task: TaskRun) => task.state === 'complete'", "const taskState = (task: TaskRun) => task.state === 'interrupted' ? 'Interrupted' : task.interrupted && task.state === 'running' ? 'Interrupting' : task.state === 'complete'");
+fs.writeFileSync('src/Workbench.tsx',wb);

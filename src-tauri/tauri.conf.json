@@ -1,0 +1,49 @@
+{
+  "$schema": "https://schema.tauri.app/config/2",
+  "productName": "Relay Terminal",
+  "version": "2.0.0",
+  "identifier": "com.relay.terminal",
+  "build": {
+    "beforeDevCommand": "npm run dev",
+    "devUrl": "http://127.0.0.1:1420",
+    "beforeBuildCommand": "npm run build",
+    "frontendDist": "../dist"
+  },
+  "app": {
+    "windows": [
+      {
+        "label": "main",
+        "create": false,
+        "title": "Relay Terminal",
+        "width": 1400,
+        "height": 880,
+        "minWidth": 760,
+        "minHeight": 500,
+        "decorations": false,
+        "dragDropEnabled": true,
+        "backgroundColor": "#111820"
+      }
+    ],
+    "security": {
+      "csp": "default-src 'self'; connect-src ipc: http://ipc.localhost; style-src 'self' 'unsafe-inline'; img-src 'self' asset: http://asset.localhost data:; font-src 'self' data:; script-src 'self'"
+    }
+  },
+  "bundle": {
+    "active": true,
+    "targets": [
+      "nsis"
+    ],
+    "icon": [
+      "icons/icon.ico"
+    ],
+    "shortDescription": "PowerShell and your local development workspace",
+    "windows": {
+      "nsis": {
+        "displayLanguageSelector": false
+      },
+      "webviewInstallMode": {
+        "type": "downloadBootstrapper"
+      }
+    }
+  }
+}

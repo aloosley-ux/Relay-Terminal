@@ -1,0 +1,33 @@
+# Dependencies and generated frontend / Rust output
+node_modules/
+dist/
+src-tauri/target/
+src-tauri/gen/
+*.tsbuildinfo
+
+# Packaged binaries, screenshots, logs and disposable acceptance profiles
+Build/
+artifacts/
+*.log
+*.tmp
+*.bak
+rustup-init.exe
+
+# Local configuration and machine-specific secrets
+.env
+.env.*
+!.env.example
+*.local
+*.pfx
+*.p12
+*.pem
+*.key
+credentials.json
+secrets.json
+
+# IDE and OS noise
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+desktop.ini

@@ -1,0 +1,11 @@
+import { chromium } from 'playwright';
+import fs from 'node:fs/promises';
+const browser = await chromium.connectOverCDP('http://127.0.0.1:9225');
+const page = browser.contexts().flatMap(c => c.pages()).find(p => /tauri|localhost/.test(p.url())) || browser.contexts()[0].pages()[0];
+page.on('pageerror', e => console.log('PAGE ERROR:', e.message));
+console.log('URL', page.url());
+console.log(await page.locator('body').innerText());
+console.log('dimensions', await page.evaluate(() => ({width:innerWidth,height:innerHeight})));
+await fs.mkdir('artifacts/screenshots', { recursive: true });
+await page.screenshot({path:'artifacts/screenshots/first-launch.png'});
+await browser.close();
