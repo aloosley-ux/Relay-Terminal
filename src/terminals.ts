@@ -5,8 +5,8 @@ import { Channel, invoke } from '@tauri-apps/api/core';
 import type { PtyEvent, Session, Settings } from './types';
 
 export const themes: Record<string, ITheme> = {
-  dark: { background: '#111820', foreground: '#e1e8f1', cursor: '#99bfff', cursorAccent: '#111820', selectionBackground: '#4c658999', black: '#344457', red: '#ed9295', green: '#96c9a7', yellow: '#e3c68a', blue: '#91b5e9', magenta: '#c5a1dd', cyan: '#86c6cc', white: '#d9dfe5', brightBlack: '#7e91a7', brightRed: '#ffadb0', brightGreen: '#b5e1c2', brightYellow: '#f4dca8', brightBlue: '#b0cefa', brightMagenta: '#dfb9f5', brightCyan: '#a6e1e4', brightWhite: '#ffffff' },
-  light: { background: '#f8f9fa', foreground: '#29333d', cursor: '#257e69', cursorAccent: '#f8f9fa', selectionBackground: '#9ccfc080', black: '#29333d', red: '#b93443', green: '#24724b', yellow: '#8d6615', blue: '#3466ae', magenta: '#8852a4', cyan: '#267880', white: '#77818b', brightBlack: '#75818c', brightRed: '#c94b59', brightGreen: '#34835a', brightYellow: '#9b7622', brightBlue: '#4a7abc', brightMagenta: '#9b65b7', brightCyan: '#388c94', brightWhite: '#a5adb6' },
+  dark: { background: '#18191d', foreground: '#ececf2', cursor: '#b5aaef', cursorAccent: '#18191d', selectionBackground: '#73658c80', black: '#44444e', red: '#eea0a4', green: '#9ac8ac', yellow: '#ddbb85', blue: '#a5bfe7', magenta: '#c1a6e4', cyan: '#92c8ce', white: '#dddde5', brightBlack: '#92939f', brightRed: '#ffb7bc', brightGreen: '#b6dfc4', brightYellow: '#f0d3a4', brightBlue: '#c0d4f4', brightMagenta: '#dac4f4', brightCyan: '#b5e0e4', brightWhite: '#ffffff' },
+  light: { background: '#fafafc', foreground: '#272731', cursor: '#6952ad', cursorAccent: '#fafafc', selectionBackground: '#b4a2d680', black: '#272731', red: '#ac3346', green: '#32684a', yellow: '#826027', blue: '#335d99', magenta: '#775197', cyan: '#286f77', white: '#70707c', brightBlack: '#6c6c7b', brightRed: '#b94a5a', brightGreen: '#3b7855', brightYellow: '#8b6828', brightBlue: '#476da8', brightMagenta: '#8863a8', brightCyan: '#367b82', brightWhite: '#9999a6' },
 };
 export const effectiveTheme = (theme: Settings['theme']) => theme === 'system' ? (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme;
 export interface TerminalRecord { terminal: Terminal; fit: FitAddon; search: SearchAddon; host: HTMLDivElement; observer: ResizeObserver; channel: Channel<PtyEvent>; id: string; write: (data: string) => void; dispose: () => void }
@@ -69,6 +69,7 @@ export async function createTerminal(session: Session, settings: Settings, chang
     if (e.ctrlKey && e.shiftKey && ['C', 'V', 'F', 'P', 'T', 'W', 'B', 'L', 'D'].includes(e.key.toUpperCase())) return false;
     if (e.ctrlKey && ['Tab', ',', '+', '=', '-'].includes(e.key)) return false;
     if (e.altKey && /^[1-9]$/.test(e.key)) return false;
+    if (e.altKey && ['ArrowLeft', 'ArrowRight'].includes(e.key)) return false;
     return true;
   });
   try {
@@ -82,7 +83,7 @@ export function mountTerminal(key: string, container: HTMLElement, active: boole
   const record = records.get(key); if (!record) return;
   if (!record.host.isConnected) { container.appendChild(record.host); record.terminal.open(record.host); record.observer.observe(record.host); }
   record.host.style.display = active ? '' : 'none';
-  if (active) { requestAnimationFrame(() => { if (record.host.offsetWidth < 20 || record.host.offsetHeight < 20) return; try { record.fit.fit(); if (record.id) void invoke('resize_session', { id: record.id, cols: record.terminal.cols, rows: record.terminal.rows }).catch(() => {}); } catch {} const focused = document.activeElement; if (!(focused instanceof HTMLElement && focused.matches('input, textarea, select') && !container.contains(focused))) record.terminal.focus(); }); }
+  if (active) { requestAnimationFrame(() => { if (record.host.offsetWidth < 20 || record.host.offsetHeight < 20) return; try { record.fit.fit(); if (record.id) void invoke('resize_session', { id: record.id, cols: record.terminal.cols, rows: record.terminal.rows }).catch(() => {}); } catch {} const focused = document.activeElement; if (!(focused instanceof HTMLElement && (focused.matches('[role=tab], [role=separator]') || focused.matches('input, textarea, select') && !container.contains(focused)))) record.terminal.focus(); }); }
 }
 export function terminalText(key: string) {
   const term = records.get(key)?.terminal; if (!term) return '';

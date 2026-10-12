@@ -2,15 +2,15 @@
 
 **A real PowerShell terminal, with the bits I kept wishing were in the same window.**
 
-**Windows · Tauri 2 · Rust/ConPTY · React/TypeScript · xterm.js · v2.0**
+**Windows · Tauri 2 · Rust/ConPTY · React/TypeScript · xterm.js · v2.1**
 
-[**Download Relay Terminal 2.0 for Windows**](https://github.com/aloosley-ux/Relay-Terminal/releases/tag/v2.0.0) · [Release notes](RELEASE-NOTES-2.0.md) · [Test results](TEST-REPORT-2.0.md)
+The current Windows executable and installer are in `Build/`. [2.1 release notes](RELEASE-NOTES-2.1.md) · [Native test results](TEST-REPORT-2.1.md) · [Design and research](docs/DESIGN-2.1.md)
 
-![Relay 2.0 showing local project tasks in its Windows desktop workspace](docs/media/relay-projects.png)
+![Relay 2.1 project tasks in its Windows desktop workspace](docs/media/relay-projects.png)
 
 Relay started as a personal replacement for juggling ConEmu tabs, project folders, commands and local development services. Instead of building another dashboard that *looks* like a terminal, it runs actual PowerShell sessions and gives them a workspace.
 
-It's a working Windows desktop application, **not a commercial terminal replacement**, not a cloud agent platform, and not finished software pretending to be finished.
+Relay 2.1 brings a unified navigator, compact session controls, contextual inspectors, consistent dark/light themes and an improved split workflow. It runs locally without a Relay account or a background service.
 
 > **The idea:** keep the terminal real, make common work easier to reach, and don't run a pile of background services just to draw a UI.
 
@@ -37,7 +37,7 @@ A command palette, keyboard shortcuts, light/dark/compact settings, saved action
 
 ## Where it stands
 
-**v2.0 is usable, but intentionally personal and Windows-focused.** Here's the distinction between working behaviour and unfinished ambitions.
+**Relay is Windows-focused.** These are its current capabilities and boundaries. The v2.0 performance measurements below are historical samples; 2.1 has separate native acceptance evidence.
 
 | Works today | Still limited / not promised |
 | --- | --- |

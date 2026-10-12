@@ -4,4 +4,5 @@ import App from './App';
 import '@xterm/xterm/css/xterm.css';
 import './style.css';
 import './workbench.css';
+import './desktop.css';
 createRoot(document.getElementById('root')!).render(<App />);
