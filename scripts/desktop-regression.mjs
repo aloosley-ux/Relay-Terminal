@@ -26,7 +26,8 @@ const output = async () => {
   for(let i=0;i<6;i++) { try { return await page.evaluate(()=>window.__TAURI_INTERNALS__.invoke('clipboard_read')); } catch(e) { if(i===5) throw e; await page.waitForTimeout(80); } }
 };
 const run = async (command, token) => {
-  await ready();
+  if(await page.locator('.command-bar:visible').count()===0)await page.getByRole('button',{name:'Compose',exact:true}).click();
+await ready();
   await page.locator('.terminal-host:visible textarea').focus();
   await page.keyboard.press('Control+c');
   await page.waitForTimeout(40);

@@ -56,7 +56,7 @@ assert.equal(await page.locator('.file-preview:visible').count(),0);
 log('Empty file preview does not reserve workspace width');
 await page.getByRole('button',{name:'Terminal view',exact:true}).click();
 await page.keyboard.press('Control+Shift+b');
-assert.equal(await page.locator('.navigator').evaluate(e=>Math.round(e.getBoundingClientRect().width)),52);
+assert.equal(await page.locator('.navigator').evaluate(e=>Math.round(e.getBoundingClientRect().width)),0);
 assert.equal(await page.getByRole('button',{name:'Projects view',exact:true}).count(),1);
 await page.keyboard.press('Control+Shift+b');log('Collapsed navigator keeps every view accessible');
 await page.emulateMedia({reducedMotion:'reduce'});

@@ -112,7 +112,7 @@ export default function Workbench(props: Props) {
   if (!projectPaths.some(p => p.toLowerCase() === project.toLowerCase())) projectPaths.unshift(project);
   const projectName = (path: string) => settings.workspaces.find(w => w.path.toLowerCase() === path.toLowerCase())?.name || basename(path);
   const filteredProjects = projectPaths.filter(p => `${projectName(p)} ${p}`.toLowerCase().includes(query.toLowerCase()));
-  const chooseProject = (path: string) => { setProject(path); setDetails(undefined); };
+  const chooseProject = (path: string) => { if (path === project) return; setProject(path); setDetails(undefined); };
   const openProject = (path: string) => open(settings.workspaces.find(w => w.path.toLowerCase() === path.toLowerCase()) || { id: `discovered:${path}`, name: projectName(path), path });
   const isPinned = (path: string) => settings.workspaces.some(w => w.path.toLowerCase() === path.toLowerCase()) || settings.favorites.some(p => p.toLowerCase() === path.toLowerCase());
   const taskState = (task: TaskRun) => task.state === 'interrupted' ? 'Interrupted' : task.interrupted && task.state === 'running' ? 'Interrupting' : task.state === 'complete' ? 'Completed' : task.state === 'failed' ? 'Failed' : task.state === 'queued' ? 'Starting' : 'Running';

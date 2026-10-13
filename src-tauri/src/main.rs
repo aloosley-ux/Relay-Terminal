@@ -6,7 +6,7 @@ mod workbench;
 mod integrations;
 
 use std::{path::PathBuf, process::Command, os::windows::process::CommandExt};
-use tauri::{Manager, State};
+use tauri::{Emitter, Manager, State};
 use storage::{Settings, AppData};
 
 #[tauri::command]
@@ -100,6 +100,7 @@ fn clipboard_write(text: String) -> Result<(), String> { storage::clipboard_writ
 #[tauri::command]
 fn clipboard_read() -> Result<String, String> { storage::clipboard_read() }
 
+mod appearance;
 fn main() {
     tauri::Builder::default()
         .setup(|app| {
@@ -115,12 +116,18 @@ fn main() {
             window.build()?;
             Ok(())
         })
-        .invoke_handler(tauri::generate_handler![bootstrap,save_settings,list_folders,pick_folder,open_directory,clipboard_write,clipboard_read,
+        .invoke_handler(tauri::generate_handler![bootstrap,save_settings,appearance::export_theme_file,list_folders,pick_folder,open_directory,clipboard_write,clipboard_read,
             workbench::project_details,workbench::browse_files,workbench::preview_file,workbench::process_snapshot,workbench::open_local_url,
             integrations::service_inventory,integrations::service_control,integrations::read_service_log,
             terminal::create_session,terminal::write_input,terminal::resize_session,terminal::ack_output,terminal::close_session,terminal::run_action])
         .on_window_event(|window, event| {
             if let tauri::WindowEvent::Destroyed = event { window.state::<terminal::Sessions>().close_all(); }
+            // An already unfocused window can minimise without another focus
+            // event. Drive decorative suspension from native resize events too.
+            if matches!(event, tauri::WindowEvent::Resized(_) | tauri::WindowEvent::Focused(_)) {
+                let visible = !window.is_minimized().unwrap_or(false) && window.is_visible().unwrap_or(true) && window.is_focused().unwrap_or(false);
+                let _ = window.emit("relay-window-visible", visible);
+            }
         })
         .run(tauri::generate_context!())
         .expect("Unable to launch Relay Terminal");

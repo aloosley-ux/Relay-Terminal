@@ -2,15 +2,15 @@
 
 **A real PowerShell terminal, with the bits I kept wishing were in the same window.**
 
-**Windows · Tauri 2 · Rust/ConPTY · React/TypeScript · xterm.js · v2.1**
+**Windows · Tauri 2 · Rust/ConPTY · React/TypeScript · xterm.js · v3.0**
 
-The current Windows executable and installer are in `Build/`. [2.1 release notes](RELEASE-NOTES-2.1.md) · [Native test results](TEST-REPORT-2.1.md) · [Design and research](docs/DESIGN-2.1.md)
+The current Windows executable and installer are in `Build/`. [3.0 release notes](RELEASE-NOTES-3.0.md) · [Native test results](TEST-REPORT-3.0.md) · [Appearance Studio](docs/APPEARANCE-STUDIO.md) · [Editable designs](docs/PENPOT-3.0.md)
 
-![Relay 2.1 project tasks in its Windows desktop workspace](docs/media/relay-projects.png)
+![Relay 3 Appearance Studio beside a live Windows PowerShell session](docs/media/relay3-studio.png)
 
 Relay started as a personal replacement for juggling ConEmu tabs, project folders, commands and local development services. Instead of building another dashboard that *looks* like a terminal, it runs actual PowerShell sessions and gives them a workspace.
 
-Relay 2.1 brings a unified navigator, compact session controls, contextual inspectors, consistent dark/light themes and an improved split workflow. It runs locally without a Relay account or a background service.
+Relay 3 opens into a floating terminal-first window. Its optional navigator, terminal-only mode and Appearance Studio keep supporting tools close without permanently reserving terminal space. Five themes, independent application/terminal styling and scoped visual overrides update live sessions without restarting their shells. It runs locally without a Relay account or a background service.
 
 > **The idea:** keep the terminal real, make common work easier to reach, and don't run a pile of background services just to draw a UI.
 
@@ -23,7 +23,7 @@ Relay 2.1 brings a unified navigator, compact session controls, contextual inspe
 | **Processes** | Observe Relay-owned tasks, existing local services and listening ports. Interrupt your own tasks; use explicit confirmations for supported external controllers. |
 | **Files** | Search directory listings and preview bounded text files without leaving the terminal workspace. |
 
-A command palette, keyboard shortcuts, light/dark/compact settings, saved actions and workspaces connect the four views. Tasks get named sessions; trying to launch the same running task again brings you back to it instead of quietly starting a duplicate.
+A command palette, keyboard shortcuts, Appearance Studio, saved actions and workspaces connect the four views. Tasks get named sessions; trying to launch the same running task again brings you back to it instead of quietly starting a duplicate.
 
 **This is a local-first tool.** There is no Relay account, telemetry, model running in the background, subscription or automatic service polling. Commands *you* choose to run can of course access the network, like they would in any terminal.
 
@@ -37,7 +37,7 @@ A command palette, keyboard shortcuts, light/dark/compact settings, saved action
 
 ## Where it stands
 
-**Relay is Windows-focused.** These are its current capabilities and boundaries. The v2.0 performance measurements below are historical samples; 2.1 has separate native acceptance evidence.
+**Relay is Windows-focused.** These are its current capabilities and boundaries. The v2.0 performance measurements below are historical samples; 3.0 has current native acceptance and effect measurements in its test report.
 
 | Works today | Still limited / not promised |
 | --- | --- |

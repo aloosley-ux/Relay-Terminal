@@ -3,6 +3,7 @@ import { FitAddon } from '@xterm/addon-fit';
 import { SearchAddon } from '@xterm/addon-search';
 import { Channel, invoke } from '@tauri-apps/api/core';
 import type { PtyEvent, Session, Settings } from './types';
+import { migrateAppearance, resolveAppearance, type AppearanceTheme } from './appearance';
 
 export const themes: Record<string, ITheme> = {
   dark: { background: '#18191d', foreground: '#ececf2', cursor: '#b5aaef', cursorAccent: '#18191d', selectionBackground: '#73658c80', black: '#44444e', red: '#eea0a4', green: '#9ac8ac', yellow: '#ddbb85', blue: '#a5bfe7', magenta: '#c1a6e4', cyan: '#92c8ce', white: '#dddde5', brightBlack: '#92939f', brightRed: '#ffb7bc', brightGreen: '#b6dfc4', brightYellow: '#f0d3a4', brightBlue: '#c0d4f4', brightMagenta: '#dac4f4', brightCyan: '#b5e0e4', brightWhite: '#ffffff' },
@@ -15,7 +16,8 @@ export async function createTerminal(session: Session, settings: Settings, chang
   const host = document.createElement('div');
   host.className = 'terminal-host';
   host.dataset.session = session.key;
-  const terminal = new Terminal({ theme: themes[effectiveTheme(settings.theme)], fontFamily: '"Cascadia Mono", "Cascadia Code", Consolas, "Courier New", monospace', fontSize: settings.fontSize, lineHeight: 1.2, letterSpacing: 0, scrollback: 10000, cursorStyle: 'bar', cursorBlink: true, allowProposedApi: false, convertEol: false, minimumContrastRatio: 4.5, rightClickSelectsWord: true });
+  // xterm 6 locks transparency at open. Never reopen/dispose to change appearance.
+  const terminal = new Terminal({ allowTransparency: true, theme: themes[effectiveTheme(settings.theme)], fontFamily: '"Cascadia Mono", "Cascadia Code", Consolas, "Courier New", monospace', fontSize: settings.fontSize, lineHeight: 1.2, letterSpacing: 0, scrollback: 10000, cursorStyle: 'bar', cursorBlink: true, allowProposedApi: false, convertEol: false, minimumContrastRatio: 4.5, rightClickSelectsWord: true });
   const fit = new FitAddon();
   const search = new SearchAddon();
   terminal.loadAddon(fit); terminal.loadAddon(search);
@@ -51,7 +53,7 @@ export async function createTerminal(session: Session, settings: Settings, chang
     else { error(event.message); change(session.key, { status: 'error' }); }
   };
   const resize = () => {
-    if (disposed || !host.isConnected || host.offsetWidth < 20 || host.style.display === 'none') return;
+    if (disposed || !host.isConnected || host.offsetWidth < 20 || host.offsetHeight < 20 || host.style.display === 'none') return;
     try { fit.fit(); } catch { return; }
     change(session.key, { cols: terminal.cols, rows: terminal.rows });
     if (id) void invoke('resize_session', { id, cols: terminal.cols, rows: terminal.rows }).catch(() => {});
@@ -59,6 +61,7 @@ export async function createTerminal(session: Session, settings: Settings, chang
   const observer = new ResizeObserver(() => { clearTimeout(resizeTimer); resizeTimer = setTimeout(resize, 40); });
   const record: TerminalRecord = { terminal, fit, search, host, observer, channel, id, write, dispose: () => { disposed = true; observer.disconnect(); clearTimeout(ackTimer); clearTimeout(resizeTimer); terminal.dispose(); host.remove(); records.delete(session.key); } };
   records.set(session.key, record);
+  applyTerminalAppearance(record, resolveAppearance(migrateAppearance(settings), session).terminal);
   terminal.onData(write);
   terminal.onResize(({ cols, rows }) => {
     change(session.key, { cols, rows });
@@ -66,7 +69,8 @@ export async function createTerminal(session: Session, settings: Settings, chang
   });
   terminal.attachCustomKeyEventHandler(e => {
     if (e.type !== 'keydown') return true;
-    if (e.ctrlKey && e.shiftKey && ['C', 'V', 'F', 'P', 'T', 'W', 'B', 'L', 'D'].includes(e.key.toUpperCase())) return false;
+    if (e.ctrlKey && e.shiftKey && ['C', 'V', 'F', 'P', 'T', 'W', 'B', 'L', 'D', 'A', 'M'].includes(e.key.toUpperCase())) return false;
+    if (e.key === 'F11') return false;
     if (e.ctrlKey && ['Tab', ',', '+', '=', '-'].includes(e.key)) return false;
     if (e.altKey && /^[1-9]$/.test(e.key)) return false;
     if (e.altKey && ['ArrowLeft', 'ArrowRight'].includes(e.key)) return false;
@@ -78,6 +82,28 @@ export async function createTerminal(session: Session, settings: Settings, chang
     change(session.key, { ...result });
     resize();
   } catch (e) { change(session.key, { status: 'error' }); error(String(e)); }
+}
+export function applyTerminalAppearance(record: TerminalRecord, theme: AppearanceTheme) {
+  const b=theme.background;
+  // Compose the surface across the entire pane, including its padding. A second
+  // translucent xterm screen would tint its text area twice and create a seam.
+  record.terminal.options.theme={...theme.terminal,background:b.type==='solid'?theme.terminal.background:`${theme.terminal.background}00`,cursorAccent:theme.terminal.background};
+  record.terminal.options.fontFamily=theme.fontFamily;
+  record.terminal.options.fontSize=theme.fontSize;
+  record.terminal.options.lineHeight=theme.lineHeight;
+  record.terminal.options.letterSpacing=theme.letterSpacing;
+  record.terminal.options.cursorStyle=theme.cursorStyle;
+  record.terminal.options.cursorBlink=theme.cursorBlink&&!matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const host=record.host;
+  host.dataset.background=b.type;
+  host.classList.toggle('ambient-animated',b.type==='ambient'&&b.animated);
+  host.style.setProperty('--pane-base',theme.terminal.background);
+  host.style.setProperty('--pane-image',b.type==='wallpaper'&&b.image?`url("${b.image}")`:`linear-gradient(${b.angle}deg, ${b.from}, ${b.to})`);
+  host.style.setProperty('--pane-blur',`${b.blur}px`);
+  host.style.setProperty('--pane-intensity',String(b.intensity*(1-b.opacity)));
+  host.style.setProperty('--pane-speed',`${b.speed}s`);
+  host.style.setProperty('--pane-padding',`${theme.padding}px`);
+  if(host.isConnected&&host.offsetWidth>20&&host.offsetHeight>20&&host.style.display!=='none') try{record.fit.fit();}catch{}
 }
 export function mountTerminal(key: string, container: HTMLElement, active: boolean) {
   const record = records.get(key); if (!record) return;
