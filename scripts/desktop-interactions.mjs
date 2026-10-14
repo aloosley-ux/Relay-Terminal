@@ -8,7 +8,7 @@ page.setDefaultTimeout(15000);
 const results=[],errors=[];
 page.on('pageerror',e=>errors.push(e.message));
 const log=name=>{results.push({name,pass:true});console.log('PASS '+name);};
-const ready=()=>page.locator('.statusbar').getByText('Ready',{exact:true}).waitFor();
+const ready=()=>page.locator('.statusbar[data-status="ready"]').waitFor();
 const native=(name,args={})=>page.evaluate(({name,args})=>window.__TAURI_INTERNALS__.invoke(name,args),{name,args});
 await page.getByRole('button',{name:'Terminal view',exact:true}).click();await ready();
 assert.equal(await page.getByRole('tab').count(),1);

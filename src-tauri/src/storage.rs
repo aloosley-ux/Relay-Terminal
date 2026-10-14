@@ -19,16 +19,20 @@ pub struct Settings {
     pub navigator_width: u16,
     pub terminal_only: bool,
     pub composer_visible: bool,
+    pub screen_reader_mode: bool,
+    pub active_session: String,
+    pub split_session: String,
+    pub split_ratio: u16,
 }
 #[derive(Serialize, Deserialize, Clone)]
-pub struct Workspace { pub id: String, pub name: String, pub path: String, #[serde(default, rename="sessionKey", skip_serializing_if="Option::is_none")] pub session_key: Option<String> }
+pub struct Workspace { pub id: String, pub name: String, pub path: String, #[serde(default, rename="sessionKey", skip_serializing_if="Option::is_none")] pub session_key: Option<String>, #[serde(default, rename="shellId", skip_serializing_if="Option::is_none")] pub shell_id: Option<String> }
 #[derive(Serialize, Deserialize, Clone)]
 #[serde(rename_all = "camelCase")]
 pub struct Action { pub id: String, pub name: String, pub icon: String, pub description: String, pub command: String, pub directory: String, pub favorite: bool }
 impl Default for Settings {
     fn default() -> Self { Self {
         theme: "dark".into(), font_size: 14, panel_open: false, shell: "auto".into(), load_profiles: false,
-        favorites: vec![], recents: vec![], workspaces: vec![], restore_tabs: true, startup_tabs: vec![], appearance: None, navigator_width:236, terminal_only:false, composer_visible:false,
+        favorites: vec![], recents: vec![], workspaces: vec![], restore_tabs: true, startup_tabs: vec![], appearance: None, navigator_width:236, terminal_only:false, composer_visible:false, screen_reader_mode:false, active_session:String::new(), split_session:String::new(), split_ratio:50,
         actions: vec![
             action("git-status","Git status","git","See changes in this project","git status --short --branch",true),
             action("git-log","Recent commits","git","The last eight commits","git log -8 --oneline",false),

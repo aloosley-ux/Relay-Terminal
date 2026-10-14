@@ -2,7 +2,7 @@ import {chromium} from 'playwright';
 import assert from 'node:assert/strict';
 const b=await chromium.connectOverCDP('http://127.0.0.1:9225');
 const p=b.contexts()[0].pages().find(p=>p.url().includes('tauri.localhost'));
-await p.locator('.statusbar').getByText('Ready',{exact:true}).waitFor();
+await p.locator('.statusbar[data-status="ready"]').waitFor();
 if(await p.getByRole('dialog').count()) {await p.keyboard.press('Escape');await p.getByRole('dialog').waitFor({state:'hidden'});}
 await p.keyboard.press('Control+Shift+l');
 await p.getByLabel('Folder path',{exact:true}).fill('C:\\AI');

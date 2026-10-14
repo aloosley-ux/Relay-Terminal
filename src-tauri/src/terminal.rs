@@ -30,7 +30,7 @@ pub enum PtyEvent {
 }
 #[derive(Serialize)]
 #[serde(rename_all="camelCase")]
-pub struct SessionInfo { id: String, pid: u32, shell: String, cwd: String }
+pub struct SessionInfo { id: String, pid: u32, shell: String, cwd: String, token: String }
 #[derive(Serialize)]
 pub struct Shell { pub id: String, pub name: String, pub path: String }
 
@@ -95,17 +95,9 @@ pub async fn create_session(cwd:String, shell:String, load_profiles:bool, cols:u
         command.arg("-NoExit");
         command.arg("-EncodedCommand");
         // In-memory prompt hook only. Never reads/writes a PowerShell profile.
-        let script = format!(r#"
-$OutputEncoding = [Console]::OutputEncoding = [System.Text.UTF8Encoding]::new($false)
-function global:prompt {{
-    $relaySucceeded = $?
-    $relayPath = $ExecutionContext.SessionState.Path.CurrentLocation.Path
-    $relayEncoded = [Convert]::ToBase64String([Text.Encoding]::UTF8.GetBytes($relayPath))
-    [Console]::Write(([char]27).ToString() + ']777;{token_spawn};' + $relayEncoded + ';' + [int]$relaySucceeded + [char]7)
-    $e = [char]27
-    return "$e[38;2;129;173;163m$relayPath$e[0m`r`n$e[38;2;129;173;163m❯$e[0m "
-}}
-"#);
+        let script = include_str!("shell-integration.ps1")
+            .replace("__RELAY_TOKEN__", &token_spawn)
+            .replace("__RELAY_LOAD_PROFILES__", if load_profiles { "$true" } else { "$false" });
         let bytes: Vec<u8> = script.encode_utf16().flat_map(|u|u.to_le_bytes()).collect();
         command.arg(STANDARD.encode(bytes));
         command.cwd(cwd_spawn);
@@ -125,7 +117,7 @@ function global:prompt {{
     let session = Arc::new(Session {
         master:Mutex::new(Some(master)),writer:Mutex::new(writer),killer:Mutex::new(child.clone_killer()),
         status:Mutex::new(Status{cwd:cwd.clone(),ready:false,dirty:false,exited:false}),
-        flow:Arc::new((Mutex::new(Flow{outstanding:0,closed:false}),Condvar::new())),job,channel:output.clone(),token,
+        flow:Arc::new((Mutex::new(Flow{outstanding:0,closed:false}),Condvar::new())),job,channel:output.clone(),token:token.clone(),
     });
     state.items.lock().map_err(|e|e.to_string())?.insert(id.clone(),session.clone());
     let s = session.clone();
@@ -168,7 +160,7 @@ function global:prompt {{
         if let Ok(mut m)=s.master.lock(){m.take();}
         let _=s.channel.send(PtyEvent::Exit{code});
     });
-    Ok(SessionInfo{id,pid,shell:shell_name,cwd})
+    Ok(SessionInfo{id,pid,shell:shell_name,cwd,token})
 }
 
 #[tauri::command]
@@ -180,7 +172,8 @@ pub async fn write_input(id:String,data:String,state:State<'_,Sessions>) -> Resu
         {
             let mut status=s.status.lock().map_err(|e|e.to_string())?;
             if status.exited {return Err("The shell has exited. Open a new tab.".into())}
-            if data.contains(['\r','\n','\x03']) {status.ready=false;status.dirty=false;}
+            if data.contains(['\r','\n']) {status.ready=false;status.dirty=false;}
+            else if data.contains('\x03') {status.dirty=false;}
             else if !data.is_empty() && !terminal_reply(&data) {status.dirty=true;}
         }
         writer.write_all(data.as_bytes()).and_then(|_|writer.flush()).map_err(|e|e.to_string())

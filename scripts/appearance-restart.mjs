@@ -1,6 +1,6 @@
 import {chromium} from 'playwright';import fs from 'node:fs/promises';import assert from 'node:assert/strict';
 const b=await chromium.connectOverCDP(`http://127.0.0.1:${process.argv[2]||9241}`);const p=b.contexts()[0].pages().find(p=>p.url().includes('tauri.localhost'));const expected=JSON.parse(await fs.readFile('artifacts/appearance-tests/restart-expected.json','utf8'));p.setDefaultTimeout(15000);
-const ready=()=>p.locator('.statusbar').getByText('Ready',{exact:true}).waitFor();await ready();
+const ready=()=>p.locator('.statusbar[data-status="ready"]').waitFor();await ready();
 const native=(name,args={})=>p.evaluate(({name,args})=>window.__TAURI_INTERNALS__.invoke(name,args),{name,args});
 const run=async c=>{await p.locator('.pane-active textarea').focus();await p.keyboard.type(c);await p.keyboard.press('Enter');};
 if(process.argv.includes('--prepare')){await run('$restartSentinel=913; Write-Output "RESTART_SEEDED"');await p.waitForFunction(()=>document.querySelector('.pane-active')?.textContent.includes('RESTART_SEEDED'));await ready();await p.waitForTimeout(400);const boot=await native('bootstrap');await fs.writeFile('artifacts/appearance-tests/restart-before.json',JSON.stringify(boot.settings.appearance));await p.getByRole('button',{name:'Close window',exact:true}).click();await p.getByRole('button',{name:'End sessions & close',exact:true}).click();console.log('PASS Native close completes persistence and ends contained sessions');}

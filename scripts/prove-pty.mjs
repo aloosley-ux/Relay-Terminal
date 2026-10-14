@@ -11,7 +11,7 @@ await page.keyboard.type('$relayProof = 37; Write-Output ("PTY proof: " + ($rela
 await page.keyboard.press('Enter');
 await page.waitForFunction(() => Array.from(document.querySelectorAll('.terminal-host')).find(el => getComputedStyle(el).display !== 'none')?.textContent.includes('PTY proof: 42'));
 await page.getByText('Ready',{exact:true}).waitFor({timeout:10000});
-await page.getByRole('button',{name:'Copy output',exact:true}).click();
+await page.getByRole('button',{name:'Copy all output',exact:true}).click();
 await page.getByText('Copied to clipboard',{exact:true}).waitFor();
 let text = await page.evaluate(() => window.__TAURI_INTERNALS__.invoke('clipboard_read'));
 assert.match(text,/PTY proof: 42/);
@@ -19,7 +19,7 @@ await page.getByLabel('Command input',{exact:true}).fill('Write-Output ("STATE "
 await page.locator('.command-bar').getByRole('button',{name:'Run',exact:true}).click();
 await page.waitForFunction(() => Array.from(document.querySelectorAll('.terminal-host')).find(el => getComputedStyle(el).display !== 'none')?.textContent.includes('STATE 37'));
 await page.getByText('Ready',{exact:true}).waitFor({timeout:10000});
-await page.getByRole('button',{name:'Copy output',exact:true}).click();
+await page.getByRole('button',{name:'Copy all output',exact:true}).click();
 text = await page.evaluate(() => window.__TAURI_INTERNALS__.invoke('clipboard_read'));
 assert.match(text,/STATE 37/);
 await page.screenshot({path:'artifacts/screenshots/pty-proof.png'});

@@ -2,9 +2,11 @@
 
 **A real PowerShell terminal, with the bits I kept wishing were in the same window.**
 
-**Windows · Tauri 2 · Rust/ConPTY · React/TypeScript · xterm.js · v3.0**
+**Windows · Tauri 2 · Rust/ConPTY · React/TypeScript · xterm.js · v4.0**
 
-The current Windows executable and installer are in `Build/`. [3.0 release notes](RELEASE-NOTES-3.0.md) · [Native test results](TEST-REPORT-3.0.md) · [Appearance Studio](docs/APPEARANCE-STUDIO.md) · [Editable designs](docs/PENPOT-3.0.md)
+The current Windows executable and installer are in `Build/`. [4.0 release notes](RELEASE-NOTES-4.0.md) · [4.0 validation](TEST-REPORT-4.0.md) · [Command copying](docs/COMMAND-OUTPUT.md) · [Relay 4 Penpot](docs/PENPOT-4.0.md)
+
+Historical 3.0 evidence: [3.0 release notes](RELEASE-NOTES-3.0.md) · [Native test results](TEST-REPORT-3.0.md) · [Appearance Studio](docs/APPEARANCE-STUDIO.md) · [Editable designs](docs/PENPOT-3.0.md)
 
 ![Relay 3 Appearance Studio beside a live Windows PowerShell session](docs/media/relay3-studio.png)
 
@@ -45,8 +47,8 @@ A command palette, keyboard shortcuts, Appearance Studio, saved actions and work
 | Named tasks with output, elapsed time and interruption | Task discovery currently favours Node and Cargo; other projects can use manually entered commands. |
 | Local files, projects, settings and actions | The file viewer is bounded plain text, not a full editor or binary viewer. |
 | Cortana service actions through an existing local controller | Integrations depend on that controller being installed/configured; RDC lifecycle management is read-only. |
-| Windows release EXE and NSIS installer | Install/uninstall on a clean machine wasn't part of the final acceptance run; binaries are unsigned. |
-| Windows PowerShell tested end to end | PowerShell 7 is preferred when present but was **not** installed during the v2.0 runtime tests; exotic full-screen console apps aren't exhaustively tested. |
+| Windows release EXE and NSIS installer | Isolated-identity install/uninstall passes with the identical payload; clean-machine and installed-product upgrade testing remain unverified. Binaries are unsigned. |
+| Windows PowerShell tested end to end | PowerShell 7.6.7 and Windows PowerShell pass 4.0 native tests; Vim, cmd and Git Bash child workflows are exercised. Other applications are not exhaustively tested. |
 
 A custom PowerShell prompt can also disable Relay's current-directory and outcome reporting; the terminal itself still functions.
 
@@ -97,7 +99,7 @@ This repository tracks the **source**, not personal test data or built executabl
 On the development machine, the existing release files live under `Build/`:
 
 - `Relay Terminal.exe` — standalone Windows executable.
-- `Relay Terminal_2.0.0_x64-setup.exe` — NSIS installer.
+- `Relay Terminal_4.0.0_x64-setup.exe` — NSIS installer.
 
 Those files are **not included in the Git repository**. A future GitHub release could host distributable builds, but none is implied by this README.
 

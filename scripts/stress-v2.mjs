@@ -5,7 +5,7 @@ import { performance } from 'node:perf_hooks';
 const browser = await chromium.connectOverCDP('http://127.0.0.1:9225');
 const page = browser.contexts()[0].pages().find(p=>p.url().includes('tauri.localhost'));
 page.setDefaultTimeout(20000);
-const ready = () => page.locator('.statusbar').getByText('Ready',{exact:true}).waitFor();
+const ready = () => page.locator('.statusbar[data-status="ready"]').waitFor();
 await page.getByRole('button',{name:'Terminal view',exact:true}).click();
 await ready();
 if(await page.getByRole('button',{name:'Close split view',exact:true}).count()) await page.getByRole('button',{name:'Close split view',exact:true}).click();

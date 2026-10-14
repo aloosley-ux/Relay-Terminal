@@ -18,10 +18,10 @@ if(resume) {
   if(await page.getByRole('dialog').count()) {await page.keyboard.press('Escape');await page.getByRole('dialog').waitFor({state:'hidden'});}
 }
 const log = (name, detail='') => { results.push({name,pass:true,detail}); fsSync.writeFileSync('artifacts/desktop-regression-results.json',JSON.stringify({results,pageErrors:failures},null,2)); console.log(`PASS ${name}${detail?' — '+detail:''}`); };
-const ready = async () => { await page.locator('.statusbar').getByText('Ready',{exact:true}).waitFor(); };
+const ready = async () => { await page.locator('.statusbar[data-status="ready"]').waitFor(); };
 const output = async () => {
   if(await page.getByRole('button',{name:'Dismiss notification',exact:true}).count()) await page.getByRole('button',{name:'Dismiss notification',exact:true}).click();
-  await page.getByRole('button',{name:'Copy output',exact:true}).click();
+  await page.getByRole('button',{name:'Copy all output',exact:true}).click();
   await page.getByText('Copied to clipboard',{exact:true}).waitFor();
   for(let i=0;i<6;i++) { try { return await page.evaluate(()=>window.__TAURI_INTERNALS__.invoke('clipboard_read')); } catch(e) { if(i===5) throw e; await page.waitForTimeout(80); } }
 };
@@ -68,7 +68,7 @@ await page.getByRole('button',{name:'Save action',exact:true}).click();
 const actionRow = page.locator('.action-row').filter({has:page.getByText('Fixture check',{exact:true})});
 await actionRow.getByRole('button',{name:'Insert',exact:true}).click();
 await page.waitForTimeout(100);
-assert.equal(await page.locator('.statusbar').getByText('Ready',{exact:true}).count(),1);
+assert.equal(await page.locator('.statusbar[data-status="ready"]').count(),1);
 let text = await output();
 assert(!text.includes('ACTION_PATH='+fixture),'Insert must not execute');
 log('Saved action Insert is distinct from Run');
@@ -160,7 +160,7 @@ await terminal().focus(); await page.keyboard.press('ArrowUp'); await page.keybo
 log('Native clipboard paste, Unicode and PowerShell command history');
 
 await page.locator('.terminal-host:visible').click({button:'right',position:{x:50,y:50}});
-await page.getByRole('button',{name:'Select all',exact:true}).click();
+await page.getByRole('menuitem',{name:'Select all',exact:true}).click();
 await page.keyboard.press('Control+Shift+c');
 await page.waitForTimeout(120);
 const selection=await page.evaluate(()=>window.__TAURI_INTERNALS__.invoke('clipboard_read'));

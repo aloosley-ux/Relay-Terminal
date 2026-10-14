@@ -7,7 +7,7 @@ assert(page,'Packaged native WebView required');page.setDefaultTimeout(15000);
 const results=[],errors=[];page.on('pageerror',e=>errors.push(e.message));
 const log=async(name,detail='')=>{results.push({name,pass:true,detail});console.log('PASS '+name+' '+detail);await fs.writeFile('artifacts/appearance-tests/native.json',JSON.stringify({results,errors},null,2));};
 const native=(name,args={})=>page.evaluate(({name,args})=>window.__TAURI_INTERNALS__.invoke(name,args),{name,args});
-const ready=()=>page.locator('.statusbar').getByText('Ready',{exact:true}).waitFor();
+const ready=()=>page.locator('.statusbar[data-status="ready"]').waitFor();
 const run=async(command,token)=>{await ready();await page.locator('.pane-active textarea').focus();await page.keyboard.type(command);await page.keyboard.press('Enter');if(token)await page.waitForFunction(t=>document.querySelector('.pane-active')?.textContent.includes(t),token);await ready();};
 const open=async()=>{if(!await page.locator('.appearance-studio').count())await page.getByRole('button',{name:'Appearance Studio',exact:true}).click();};
 const close=async()=>{if(await page.locator('.appearance-studio').count())await page.getByRole('button',{name:'Close Appearance Studio',exact:true}).click();};
