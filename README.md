@@ -2,15 +2,19 @@
 
 **A real PowerShell terminal, with the bits I kept wishing were in the same window.**
 
-**Windows · Tauri 2 · Rust/ConPTY · React/TypeScript · xterm.js · v2.1**
+**Windows · Tauri 2 · Rust/ConPTY · React/TypeScript · xterm.js · v4.0**
 
-The current Windows executable and installer are in `Build/`. [2.1 release notes](RELEASE-NOTES-2.1.md) · [Native test results](TEST-REPORT-2.1.md) · [Design and research](docs/DESIGN-2.1.md)
+Download [Relay Terminal 4.0.0](https://github.com/aloosley-ux/Relay-Terminal/releases/tag/v4.0.0): [Windows installer](https://github.com/aloosley-ux/Relay-Terminal/releases/download/v4.0.0/Relay-Terminal_4.0.0_x64-setup.exe) · [Standalone executable](https://github.com/aloosley-ux/Relay-Terminal/releases/download/v4.0.0/Relay-Terminal_4.0.0_x64.exe) · [SHA-256 checksums](https://github.com/aloosley-ux/Relay-Terminal/releases/download/v4.0.0/SHA256SUMS.txt).
 
-![Relay 2.1 project tasks in its Windows desktop workspace](docs/media/relay-projects.png)
+[4.0 release notes](RELEASE-NOTES-4.0.md) · [4.0 validation](TEST-REPORT-4.0.md) · [Command copying](docs/COMMAND-OUTPUT.md) · [Relay 4 Penpot](docs/PENPOT-4.0.md)
+
+Historical 3.0 evidence: [3.0 release notes](RELEASE-NOTES-3.0.md) · [Native test results](TEST-REPORT-3.0.md) · [Appearance Studio](docs/APPEARANCE-STUDIO.md) · [Editable designs](docs/PENPOT-3.0.md)
+
+![Relay 3 Appearance Studio beside a live Windows PowerShell session](docs/media/relay3-studio.png)
 
 Relay started as a personal replacement for juggling ConEmu tabs, project folders, commands and local development services. Instead of building another dashboard that *looks* like a terminal, it runs actual PowerShell sessions and gives them a workspace.
 
-Relay 2.1 brings a unified navigator, compact session controls, contextual inspectors, consistent dark/light themes and an improved split workflow. It runs locally without a Relay account or a background service.
+Relay 3 opens into a floating terminal-first window. Its optional navigator, terminal-only mode and Appearance Studio keep supporting tools close without permanently reserving terminal space. Five themes, independent application/terminal styling and scoped visual overrides update live sessions without restarting their shells. It runs locally without a Relay account or a background service.
 
 > **The idea:** keep the terminal real, make common work easier to reach, and don't run a pile of background services just to draw a UI.
 
@@ -23,7 +27,7 @@ Relay 2.1 brings a unified navigator, compact session controls, contextual inspe
 | **Processes** | Observe Relay-owned tasks, existing local services and listening ports. Interrupt your own tasks; use explicit confirmations for supported external controllers. |
 | **Files** | Search directory listings and preview bounded text files without leaving the terminal workspace. |
 
-A command palette, keyboard shortcuts, light/dark/compact settings, saved actions and workspaces connect the four views. Tasks get named sessions; trying to launch the same running task again brings you back to it instead of quietly starting a duplicate.
+A command palette, keyboard shortcuts, Appearance Studio, saved actions and workspaces connect the four views. Tasks get named sessions; trying to launch the same running task again brings you back to it instead of quietly starting a duplicate.
 
 **This is a local-first tool.** There is no Relay account, telemetry, model running in the background, subscription or automatic service polling. Commands *you* choose to run can of course access the network, like they would in any terminal.
 
@@ -37,7 +41,7 @@ A command palette, keyboard shortcuts, light/dark/compact settings, saved action
 
 ## Where it stands
 
-**Relay is Windows-focused.** These are its current capabilities and boundaries. The v2.0 performance measurements below are historical samples; 2.1 has separate native acceptance evidence.
+**Relay is Windows-focused.** These are its current capabilities and boundaries. The v2.0 performance measurements below are historical samples; the [4.0 test report](TEST-REPORT-4.0.md) records current native acceptance and the remaining verification limits.
 
 | Works today | Still limited / not promised |
 | --- | --- |
@@ -45,12 +49,12 @@ A command palette, keyboard shortcuts, light/dark/compact settings, saved action
 | Named tasks with output, elapsed time and interruption | Task discovery currently favours Node and Cargo; other projects can use manually entered commands. |
 | Local files, projects, settings and actions | The file viewer is bounded plain text, not a full editor or binary viewer. |
 | Cortana service actions through an existing local controller | Integrations depend on that controller being installed/configured; RDC lifecycle management is read-only. |
-| Windows release EXE and NSIS installer | Install/uninstall on a clean machine wasn't part of the final acceptance run; binaries are unsigned. |
-| Windows PowerShell tested end to end | PowerShell 7 is preferred when present but was **not** installed during the v2.0 runtime tests; exotic full-screen console apps aren't exhaustively tested. |
+| Windows release EXE and NSIS installer | Isolated-identity install/uninstall passes with the identical payload; clean-machine and installed-product upgrade testing remain unverified. Binaries are unsigned. |
+| Windows PowerShell tested end to end | PowerShell 7.6.7 and Windows PowerShell pass 4.0 native tests; Vim, cmd and Git Bash child workflows are exercised. Other applications are not exhaustively tested. |
 
 A custom PowerShell prompt can also disable Relay's current-directory and outcome reporting; the terminal itself still functions.
 
-For the detailed, less glamorous list, read [the v2.0 test report](TEST-REPORT-2.0.md) and [release notes](RELEASE-NOTES-2.0.md).
+For details, read [the 4.0 test report](TEST-REPORT-4.0.md) and [release notes](RELEASE-NOTES-4.0.md).
 
 ## How it was made
 
@@ -97,9 +101,9 @@ This repository tracks the **source**, not personal test data or built executabl
 On the development machine, the existing release files live under `Build/`:
 
 - `Relay Terminal.exe` — standalone Windows executable.
-- `Relay Terminal_2.0.0_x64-setup.exe` — NSIS installer.
+- `Relay Terminal_4.0.0_x64-setup.exe` — NSIS installer.
 
-Those files are **not included in the Git repository**. A future GitHub release could host distributable builds, but none is implied by this README.
+Built executables are distributed as assets on the [4.0.0 GitHub release](https://github.com/aloosley-ux/Relay-Terminal/releases/tag/v4.0.0), alongside checksums and validation documentation. They are not stored in Git source history. The release uses versioned filenames; local copies remain under `Build/`, with upload-ready assets under `Build/Release-4.0.0/`.
 
 Relay requires Windows 10 (1809+) or Windows 11 and WebView2. Use PowerShell 7 if installed; Windows PowerShell works too. The builds are currently unsigned.
 

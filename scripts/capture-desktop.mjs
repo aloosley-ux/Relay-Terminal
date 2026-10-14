@@ -9,7 +9,7 @@ await fs.mkdir(directory, { recursive:true });
 const shot=async name=>{await page.waitForTimeout(180);await page.screenshot({path:`${directory}/${name}.png`}); console.log(name, await page.evaluate(()=>({width:innerWidth,height:innerHeight})));};
 if (await page.getByRole('dialog').count()) await page.keyboard.press('Escape');
 await page.getByRole('button',{name:'Terminal view',exact:true}).click();
-await page.locator('.statusbar').getByText('Ready',{exact:true}).waitFor();
+await page.locator('.statusbar[data-status="ready"]').waitFor();
 await shot('terminal-dark');
 await page.getByRole('button',{name:'Projects view',exact:true}).click();
 await page.getByRole('button',{name:'Use terminal’s current folder',exact:true}).click();

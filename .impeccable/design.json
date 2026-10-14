@@ -1,0 +1,242 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-12T23:18:49Z",
+  "title": "Design System: Relay Terminal",
+  "extensions": {
+    "colorMeta": {
+      "harbor-accent": {
+        "role": "primary",
+        "displayName": "Harbor slate blue"
+      },
+      "porcelain-accent": {
+        "role": "primary",
+        "displayName": "Porcelain daylight blue"
+      },
+      "carbon-accent": {
+        "role": "primary",
+        "displayName": "Carbon warm sand"
+      },
+      "tideland-accent": {
+        "role": "primary",
+        "displayName": "Tideland sea green"
+      },
+      "frost-accent": {
+        "role": "primary",
+        "displayName": "Frost pale blue grey"
+      },
+      "harbor-background": {
+        "role": "neutral",
+        "displayName": "Harbor frame"
+      },
+      "porcelain-background": {
+        "role": "neutral",
+        "displayName": "Porcelain frame"
+      },
+      "carbon-background": {
+        "role": "neutral",
+        "displayName": "Carbon frame"
+      },
+      "tideland-background": {
+        "role": "neutral",
+        "displayName": "Tideland frame"
+      },
+      "frost-background": {
+        "role": "neutral",
+        "displayName": "Frost frame"
+      }
+    },
+    "typographyMeta": {
+      "body": {
+        "displayName": "Interface body",
+        "purpose": "Compact Windows control and supporting-view text."
+      },
+      "title": {
+        "displayName": "Studio title",
+        "purpose": "Appearance Studio heading."
+      },
+      "label": {
+        "displayName": "Control label",
+        "purpose": "Buttons, fields and navigation labels."
+      },
+      "caption": {
+        "displayName": "Caption",
+        "purpose": "Paths, status, chips and secondary instructions."
+      },
+      "terminal": {
+        "displayName": "Live shell",
+        "purpose": "Editable terminal defaults, independent of interface typography."
+      }
+    },
+    "shadows": [
+      {
+        "name": "dialog",
+        "value": "0 16px 48px #0005",
+        "purpose": "Studio stylesheet's current modal elevation."
+      },
+      {
+        "name": "toast",
+        "value": "0 4px 24px #0003",
+        "purpose": "Transient status toast."
+      },
+      {
+        "name": "find",
+        "value": "0 5px 20px #0003",
+        "purpose": "Terminal find overlay."
+      },
+      {
+        "name": "compact-navigation",
+        "value": "12px 0 24px #0003",
+        "purpose": "Temporary navigator below 820px."
+      }
+    ],
+    "motion": [
+      {
+        "name": "control-colour",
+        "value": "background 100ms,color 100ms,border-color 100ms",
+        "purpose": "Control hover and focus colour transitions."
+      },
+      {
+        "name": "toast-entry",
+        "value": "toast-in .15s ease-out",
+        "purpose": "Opacity 0 to 1 and translate 0 5px to 0 0."
+      },
+      {
+        "name": "dialog-entry",
+        "value": "toast-in .16s ease-out",
+        "purpose": "Same restrained entry movement for dialogs."
+      },
+      {
+        "name": "ambient-drift",
+        "value": "relay-drift var(--pane-speed,30s) ease-in-out infinite alternate",
+        "purpose": "Opt-in backdrop only; translate(-3%,-2%) to translate(3%,2%). Paused hidden/minimised; disabled for reduced motion."
+      },
+      {
+        "name": "switch-thumb",
+        "value": "translate .15s",
+        "purpose": "Settings switch thumb movement; reduced motion disables it."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "supporting-view-compact",
+        "value": "1100px"
+      },
+      {
+        "name": "studio-compact",
+        "value": "1000px"
+      },
+      {
+        "name": "workbench-compact",
+        "value": "900px"
+      },
+      {
+        "name": "temporary-navigation",
+        "value": "820px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Compact accent action using the active application palette.",
+      "html": "<button class=\"ds-primary\">Apply</button>",
+      "css": ".ds-primary{font:500 12px 'Segoe UI Variable Text','Segoe UI',sans-serif;display:inline-flex;align-items:center;justify-content:center;gap:7px;white-space:nowrap;padding:8px 12px;border-radius:5px;border:1px solid var(--accent,#93b8dd);background:var(--accent,#93b8dd);color:var(--terminal,#141e29);cursor:pointer;transition:background 100ms,color 100ms,border-color 100ms}.ds-primary:hover:not(:disabled){background:var(--accent-strong,#93b8dd)}.ds-primary:focus-visible{outline:2px solid var(--focus,#93b8dd);outline-offset:2px}.ds-primary:active:not(:disabled){filter:brightness(.94)}.ds-primary:disabled{opacity:.45;cursor:default}@media(prefers-reduced-motion:reduce){.ds-primary{transition:none}}"
+    },
+    {
+      "name": "Secondary button",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "Bordered secondary action with a raised hover surface.",
+      "html": "<button class=\"ds-secondary\">Cancel</button>",
+      "css": ".ds-secondary{font:500 12px 'Segoe UI Variable Text','Segoe UI',sans-serif;display:inline-flex;align-items:center;justify-content:center;gap:7px;white-space:nowrap;padding:8px 12px;border-radius:5px;border:1px solid var(--border,#344352);background:transparent;color:var(--text,#e0e8ef);cursor:pointer;transition:background 100ms,color 100ms,border-color 100ms}.ds-secondary:hover:not(:disabled){background:var(--hover,#27313d)}.ds-secondary:focus-visible{outline:2px solid var(--focus,#93b8dd);outline-offset:2px}.ds-secondary:active:not(:disabled){filter:brightness(.94)}.ds-secondary:disabled{opacity:.45;cursor:default}@media(prefers-reduced-motion:reduce){.ds-secondary{transition:none}}"
+    },
+    {
+      "name": "Icon button",
+      "kind": "button",
+      "refersTo": "button-icon",
+      "description": "Muted small action that gains text contrast and a raised hover surface.",
+      "html": "<button class=\"ds-icon\" aria-label=\"New session\"><svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.65\"><path d=\"M12 5v14M5 12h14\"/></svg></button>",
+      "css": ".ds-icon{display:inline-flex;align-items:center;justify-content:center;width:29px;height:29px;padding:0;border:0;border-radius:5px;background:transparent;color:var(--muted,#a7b6c4);cursor:pointer;transition:background 100ms,color 100ms,border-color 100ms}.ds-icon:hover:not(:disabled){background:var(--hover,#27313d);color:var(--text,#e0e8ef)}.ds-icon:focus-visible{outline:2px solid var(--focus,#93b8dd);outline-offset:2px}.ds-icon:active:not(:disabled){filter:brightness(.94)}.ds-icon:disabled{opacity:.45;cursor:default}@media(prefers-reduced-motion:reduce){.ds-icon{transition:none}}"
+    },
+    {
+      "name": "Text field",
+      "kind": "input",
+      "refersTo": "input",
+      "description": "Terminal-toned field with explicit keyboard focus.",
+      "html": "<input class=\"ds-input\" aria-label=\"Project path\" placeholder=\"Project path\" value=\"C:\\Projects\\Relay\">",
+      "css": ".ds-input{font:13px 'Segoe UI Variable Text','Segoe UI',sans-serif;min-width:0;padding:9px 11px;border:1px solid var(--border,#344352);border-radius:5px;background:var(--terminal,#141e29);color:var(--text,#e0e8ef);transition:background 100ms,color 100ms,border-color 100ms}.ds-input::placeholder{color:var(--faint,#a7b6c4)}.ds-input:focus-visible{outline:2px solid var(--focus,#93b8dd);outline-offset:2px}@media(prefers-reduced-motion:reduce){.ds-input{transition:none}}"
+    },
+    {
+      "name": "Navigator row",
+      "kind": "nav",
+      "refersTo": "navigation-selected",
+      "description": "Compact navigation row with a quiet selected surface and narrow accent marker.",
+      "html": "<nav class=\"ds-nav\" aria-label=\"Tools\"><button class=\"ds-nav-row ds-selected\" aria-current=\"page\"><svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.65\"><path d=\"m4 7 5 5-5 5M12 17h8\"/></svg>Terminal</button><button class=\"ds-nav-row\">Projects</button></nav>",
+      "css": ".ds-nav{display:flex;flex-direction:column;gap:4px}.ds-nav-row{font:450 13px 'Segoe UI Variable Text','Segoe UI',sans-serif;position:relative;display:flex;align-items:center;gap:11px;height:32px;padding:0 12px;border:0;border-radius:5px;background:transparent;color:var(--muted,#a7b6c4);text-align:left;cursor:pointer;transition:background 100ms,color 100ms,border-color 100ms}.ds-nav-row:hover{background:var(--raised,#27313d);color:var(--text,#e0e8ef)}.ds-nav-row.ds-selected{background:var(--accent-bg,#27313d);color:var(--text,#e0e8ef)}.ds-nav-row.ds-selected svg{color:var(--accent,#93b8dd)}.ds-nav-row.ds-selected::before{content:'';position:absolute;left:0;top:8px;width:2px;height:16px;border-radius:1px;background:var(--accent,#93b8dd)}.ds-nav-row:focus-visible{outline:2px solid var(--focus,#93b8dd);outline-offset:2px}.ds-nav-row:active{filter:brightness(.94)}@media(prefers-reduced-motion:reduce){.ds-nav-row{transition:none}}"
+    },
+    {
+      "name": "Selected session tab",
+      "kind": "nav",
+      "refersTo": "session-tab-selected",
+      "description": "A tab joins the terminal surface with one thin bottom accent indicator.",
+      "html": "<button class=\"ds-tab\" aria-current=\"page\"><span class=\"ds-session-dot\"></span>PowerShell</button>",
+      "css": ".ds-tab{font:12px 'Segoe UI Variable Text','Segoe UI',sans-serif;position:relative;display:flex;align-items:center;gap:9px;min-width:130px;max-width:230px;height:36px;margin-top:3px;padding:0 10px 0 13px;border:0;border-radius:6px 6px 0 0;background:var(--terminal,#141e29);color:var(--text,#e0e8ef);cursor:pointer;transition:background 100ms,color 100ms,border-color 100ms}.ds-tab::after{content:'';position:absolute;bottom:0;left:13px;right:13px;height:1px;background:var(--accent,#93b8dd)}.ds-session-dot{width:4px;height:4px;border-radius:50%;background:var(--muted,#a7b6c4)}.ds-tab:hover{background:var(--terminal,#141e29)}.ds-tab:focus-visible{outline:2px solid var(--focus,#93b8dd);outline-offset:2px}.ds-tab:active{filter:brightness(.94)}@media(prefers-reduced-motion:reduce){.ds-tab{transition:none}}"
+    },
+    {
+      "name": "State chip",
+      "kind": "chip",
+      "refersTo": "status-chip",
+      "description": "A non-interactive state label for supporting process views.",
+      "html": "<span class=\"ds-chip\">Stopped</span>",
+      "css": ".ds-chip{display:inline-flex;font:11px 'Segoe UI Variable Text','Segoe UI',sans-serif;padding:4px 9px;border-radius:4px;border:1px solid var(--border,#344352);background:var(--raised,#27313d);color:var(--muted,#a7b6c4)}"
+    },
+    {
+      "name": "Theme tile",
+      "kind": "card",
+      "refersTo": "theme-tile",
+      "description": "Selectable appearance preview; the sample retains its own preset colours.",
+      "html": "<button class=\"ds-theme ds-theme-selected\" aria-pressed=\"true\"><span class=\"ds-theme-sample\">PS C:\\Projects&gt;<br>npm run dev</span><strong>Harbor</strong><small>Slate-blue</small></button>",
+      "css": ".ds-theme{font-family:'Segoe UI Variable Text','Segoe UI',sans-serif;display:flex;flex-direction:column;min-width:0;text-align:left;padding:0 0 9px;border:1px solid var(--border,#344352);border-radius:7px;overflow:hidden;background:transparent;color:var(--text,#e0e8ef);cursor:pointer;transition:background 100ms,color 100ms,border-color 100ms}.ds-theme:hover{border-color:var(--muted,#a7b6c4)}.ds-theme.ds-theme-selected{border-color:var(--accent,#93b8dd)}.ds-theme-sample{display:block;width:100%;height:88px;padding:12px 10px;font:9px/1.8 Consolas,monospace;background:#141e29;color:#e0e8ef}.ds-theme strong{font-size:12px;padding:10px 10px 0;font-weight:600}.ds-theme small{font-size:10px;padding:3px 10px 0;color:var(--muted,#a7b6c4)}.ds-theme:focus-visible{outline:2px solid var(--focus,#93b8dd);outline-offset:2px}.ds-theme:active{filter:brightness(.94)}@media(prefers-reduced-motion:reduce){.ds-theme{transition:none}}"
+    },
+    {
+      "name": "Dialog surface",
+      "kind": "custom",
+      "refersTo": "dialog",
+      "description": "Bounded supporting surface with internal scrolling and restrained elevation.",
+      "html": "<section class=\"ds-dialog\" role=\"dialog\" aria-label=\"Session details\"><h2>Session details</h2><p>PowerShell Â· C:\\Projects\\Relay</p></section>",
+      "css": ".ds-dialog{font:13px 'Segoe UI Variable Text','Segoe UI',sans-serif;width:540px;max-width:95vw;max-height:calc(100vh - 48px);padding:24px;border:1px solid var(--border,#344352);border-radius:10px;background:var(--bg,#1c2835);color:var(--text,#e0e8ef);box-shadow:0 16px 48px #0005;overflow-y:auto}.ds-dialog h2{font-size:20px;font-weight:600;letter-spacing:-.3px}.ds-dialog p{color:var(--muted,#a7b6c4)}"
+    }
+  ],
+  "narrative": {
+    "northStar": "A calm Windows instrument",
+    "overview": "Relay gives live shell content the largest continuous surface. Its frame is compact, legible and familiar: quiet controls, precise separators and restrained selection. Supporting tools appear when needed; the shell stays visually and operationally present.\n\nThe five appearance worlds change material and temperature without changing the control language. Appearance Studio previews on the actual terminal, preserving its process and scrollback. Segoe controls and Cascadia shell content distinguish interface from output.",
+    "keyCharacteristics": [
+      "Terminal-first density with small, consistent Windows controls.",
+      "Theme-aware tonal surfaces and sparse accent marks.",
+      "Independent application and terminal palettes.",
+      "Crisp foreground content over optional, subdued backdrops."
+    ],
+    "rules": [
+      {
+        "name": "The Independent Palettes Rule",
+        "body": "Application chrome follows the application theme; each shell follows its terminal appearance. Do not infer one from the other.",
+        "section": "colors"
+      }
+    ],
+    "dos": [
+      "Do keep the live shell as the largest continuous working surface.",
+      "Do resolve chrome and terminal appearance independently.",
+      "Do preserve opaque text, cursor and selection over optional backdrops.",
+      "Do retain visible keyboard focus and reduced-motion behaviour.",
+      "Do use compact rows, modest corners and thin separators for supporting tools."
+    ],
+    "donts": [
+      "Don't recreate a terminal or restart its shell to preview appearance.",
+      "Don't import the retired CSS palette as a sixth theme.",
+      "Don't expand supporting tools into ornamental dashboard cards.",
+      "Don't let backdrop opacity fade terminal foreground content."
+    ]
+  }
+}

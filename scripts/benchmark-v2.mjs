@@ -24,7 +24,7 @@ for(let iteration=0;iteration<3;iteration++) {
   if(!page) {page=await context.waitForEvent('page',{timeout:15000});}
   await page.getByRole('button',{name:'New tab',exact:true}).waitFor();
   const windowReadyMs=Math.round(performance.now()-start);
-  await page.locator('.statusbar').getByText('Ready',{exact:true}).waitFor({timeout:15000});
+  await page.locator('.statusbar[data-status="ready"]').waitFor({timeout:15000});
   await page.waitForFunction(()=>document.querySelector('.xterm-rows')?.textContent.includes('❯'));
   const shellReadyMs=Math.round(performance.now()-start);
   metrics.push({iteration:iteration+1,pid:child.pid,windowReadyMs,shellReadyMs});

@@ -298,3 +298,10 @@ svg { stroke-width:1.65; }
   .activity-rail>button.selected,.tab.selected,.panel-switch .active { outline:1px solid Highlight; }
   .session-dot,.state-dot { forced-color-adjust:none; }
 }
+.terminal-context-menu { width: 320px; max-width: calc(100vw - 16px); max-height: calc(100vh - 16px); overflow-y: auto; }
+.terminal-context-menu button { min-height: 30px; }
+.terminal-context-menu button:focus-visible { outline: 2px solid var(--focus); outline-offset: -2px; background: var(--hover); }
+.terminal-menu-caption { padding: 8px 10px; color: var(--muted); font-size: 12px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.recovery-notice { display: flex; align-items: center; gap: 12px; padding: 8px 16px; background: var(--raised); color: var(--text); font-size: 12px; }
+.recovery-notice span { flex: 1; }
+.recovery-notice button { color: var(--accent); padding: 4px 8px; }

@@ -2,7 +2,7 @@ import {chromium} from 'playwright';
 import fs from 'node:fs/promises';
 const b=await chromium.connectOverCDP('http://127.0.0.1:9225');
 const p=b.contexts()[0].pages().find(p=>p.url().includes('tauri.localhost'));
-const ready=()=>p.locator('.statusbar').getByText('Ready',{exact:true}).waitFor();
+const ready=()=>p.locator('.statusbar[data-status="ready"]').waitFor();
 if(await p.locator('.statusbar').getByText('Running',{exact:true}).count()) {
   await p.getByRole('button',{name:'Interrupt Ctrl C',exact:false}).click();
   await ready();

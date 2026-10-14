@@ -4,7 +4,7 @@ import fs from 'node:fs/promises';
 const b=await chromium.connectOverCDP('http://127.0.0.1:9225');
 const p=b.contexts()[0].pages().find(p=>p.url().includes('tauri.localhost')); p.setDefaultTimeout(15000);
 const results=[];
-const ready=()=>p.locator('.statusbar').getByText('Ready',{exact:true}).waitFor();
+const ready=()=>p.locator('.statusbar[data-status="ready"]').waitFor();
 await p.getByRole('button',{name:'Terminal view',exact:true}).click();await ready();
 if(await p.getByRole('button',{name:'Close split view',exact:true}).count())await p.getByRole('button',{name:'Close split view',exact:true}).click();
 await p.locator('.terminal-host.pane-active textarea').focus();

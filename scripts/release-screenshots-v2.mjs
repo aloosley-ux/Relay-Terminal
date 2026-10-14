@@ -5,11 +5,11 @@ const native=(name,args)=>page.evaluate(({name,args})=>window.__TAURI_INTERNALS_
 const clearToast=async()=>{const dismiss=page.getByRole('button',{name:'Dismiss notification',exact:true});if(await dismiss.count())await dismiss.click();await page.mouse.move(1300,90);};
 await native('plugin:window|set_size',{label:'main',value:{Logical:{width:1600,height:1000}}});
 await page.getByRole('button',{name:'Terminal view',exact:true}).click();
-await page.locator('.statusbar').getByText('Ready',{exact:true}).waitFor();
+await page.locator('.statusbar[data-status="ready"]').waitFor();
 await page.locator('.terminal-host.pane-active textarea').focus();await page.keyboard.press('Control+c');await page.waitForTimeout(100);
 await page.getByLabel('Command input',{exact:true}).fill("Set-Location -LiteralPath 'C:\\AI\\REA\\Experiments\\Relay-Terminal'; Clear-Host; Write-Host 'Relay 2.0 / local workspace' -ForegroundColor Cyan; $PSVersionTable.PSVersion; Get-ChildItem -Name");
 await page.locator('.command-bar').getByRole('button',{name:'Run',exact:true}).click();
-await page.locator('.statusbar').getByText('Ready',{exact:true}).waitFor();
+await page.locator('.statusbar[data-status="ready"]').waitFor();
 await page.getByRole('tab',{selected:true}).dblclick();await page.getByLabel('Tab name',{exact:true}).fill('Relay Terminal');await page.getByRole('button',{name:'Rename',exact:true}).click();
 await clearToast();await page.screenshot({path:'artifacts/screenshots/relay-2-terminal.png'});
 await page.getByRole('button',{name:'Projects view',exact:true}).click();await page.getByRole('button',{name:'Use terminal’s current folder',exact:true}).click();

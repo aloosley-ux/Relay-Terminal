@@ -14,9 +14,9 @@ const errors = [], results = [];
 page.on('pageerror', e => errors.push(e.message));
 const log = (name, detail = '') => { results.push({ name, pass: true, detail }); fsSync.writeFileSync('artifacts/v2-acceptance.json', JSON.stringify({ results, errors }, null, 2)); console.log(`PASS ${name} ${detail}`); };
 const native = (name, args = {}) => page.evaluate(({ name, args }) => window.__TAURI_INTERNALS__.invoke(name, args), { name, args });
-const ready = () => page.locator('.statusbar').getByText('Ready', { exact: true }).waitFor();
+const ready = () => page.locator('.statusbar[data-status="ready"]').waitFor();
 const view = async name => { await page.getByRole('button', { name: name + ' view', exact: true }).click(); };
-const output = async () => { await page.getByRole('button', { name: 'Copy output', exact: true }).click(); await page.getByText('Copied to clipboard', { exact: true }).waitFor(); return native('clipboard_read'); };
+const output = async () => { await page.getByRole('button', { name: 'Copy all output', exact: true }).click(); await page.getByText('Copied to clipboard', { exact: true }).waitFor(); return native('clipboard_read'); };
 const run = async (command, token) => {
   await view('Terminal'); await ready();
   await page.locator('.terminal-host.pane-active textarea').focus(); await page.keyboard.press('Control+c'); await page.waitForTimeout(100); await ready();

@@ -1,7 +1,7 @@
 import {chromium} from 'playwright';
 const b=await chromium.connectOverCDP('http://127.0.0.1:9225');
 const p=b.contexts()[0].pages().find(p=>p.url().includes('tauri.localhost'));
-const ready=()=>p.locator('.statusbar').getByText('Ready',{exact:true}).waitFor();
+const ready=()=>p.locator('.statusbar[data-status="ready"]').waitFor();
 await p.getByRole('tab',{name:'Nostalgia',exact:true}).click();
 await ready(); await p.waitForTimeout(80);
 await p.getByLabel('Command input',{exact:true}).fill('Clear-Host; Get-Location; git status --short --branch; git log -5 --oneline');
