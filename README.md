@@ -4,7 +4,9 @@
 
 **Windows · Tauri 2 · Rust/ConPTY · React/TypeScript · xterm.js · v4.0**
 
-The current Windows executable and installer are in `Build/`. [4.0 release notes](RELEASE-NOTES-4.0.md) · [4.0 validation](TEST-REPORT-4.0.md) · [Command copying](docs/COMMAND-OUTPUT.md) · [Relay 4 Penpot](docs/PENPOT-4.0.md)
+Download [Relay Terminal 4.0.0](https://github.com/aloosley-ux/Relay-Terminal/releases/tag/v4.0.0): [Windows installer](https://github.com/aloosley-ux/Relay-Terminal/releases/download/v4.0.0/Relay-Terminal_4.0.0_x64-setup.exe) · [Standalone executable](https://github.com/aloosley-ux/Relay-Terminal/releases/download/v4.0.0/Relay-Terminal_4.0.0_x64.exe) · [SHA-256 checksums](https://github.com/aloosley-ux/Relay-Terminal/releases/download/v4.0.0/SHA256SUMS.txt).
+
+[4.0 release notes](RELEASE-NOTES-4.0.md) · [4.0 validation](TEST-REPORT-4.0.md) · [Command copying](docs/COMMAND-OUTPUT.md) · [Relay 4 Penpot](docs/PENPOT-4.0.md)
 
 Historical 3.0 evidence: [3.0 release notes](RELEASE-NOTES-3.0.md) · [Native test results](TEST-REPORT-3.0.md) · [Appearance Studio](docs/APPEARANCE-STUDIO.md) · [Editable designs](docs/PENPOT-3.0.md)
 
@@ -39,7 +41,7 @@ A command palette, keyboard shortcuts, Appearance Studio, saved actions and work
 
 ## Where it stands
 
-**Relay is Windows-focused.** These are its current capabilities and boundaries. The v2.0 performance measurements below are historical samples; 3.0 has current native acceptance and effect measurements in its test report.
+**Relay is Windows-focused.** These are its current capabilities and boundaries. The v2.0 performance measurements below are historical samples; the [4.0 test report](TEST-REPORT-4.0.md) records current native acceptance and the remaining verification limits.
 
 | Works today | Still limited / not promised |
 | --- | --- |
@@ -52,7 +54,7 @@ A command palette, keyboard shortcuts, Appearance Studio, saved actions and work
 
 A custom PowerShell prompt can also disable Relay's current-directory and outcome reporting; the terminal itself still functions.
 
-For the detailed, less glamorous list, read [the v2.0 test report](TEST-REPORT-2.0.md) and [release notes](RELEASE-NOTES-2.0.md).
+For details, read [the 4.0 test report](TEST-REPORT-4.0.md) and [release notes](RELEASE-NOTES-4.0.md).
 
 ## How it was made
 
@@ -101,7 +103,7 @@ On the development machine, the existing release files live under `Build/`:
 - `Relay Terminal.exe` — standalone Windows executable.
 - `Relay Terminal_4.0.0_x64-setup.exe` — NSIS installer.
 
-Those files are **not included in the Git repository**. A future GitHub release could host distributable builds, but none is implied by this README.
+Built executables are distributed as assets on the [4.0.0 GitHub release](https://github.com/aloosley-ux/Relay-Terminal/releases/tag/v4.0.0), alongside checksums and validation documentation. They are not stored in Git source history. The release uses versioned filenames; local copies remain under `Build/`, with upload-ready assets under `Build/Release-4.0.0/`.
 
 Relay requires Windows 10 (1809+) or Windows 11 and WebView2. Use PowerShell 7 if installed; Windows PowerShell works too. The builds are currently unsigned.
 
