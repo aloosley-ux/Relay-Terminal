@@ -8,6 +8,8 @@ Download [Relay Terminal 4.0.0](https://github.com/aloosley-ux/Relay-Terminal/re
 
 [4.0 release notes](RELEASE-NOTES-4.0.md) · [4.0 validation](TEST-REPORT-4.0.md) · [Command copying](docs/COMMAND-OUTPUT.md) · [Relay 4 Penpot](docs/PENPOT-4.0.md)
 
+The separate [`relay4-identity-refinement` experiment](design/relay4-identity/README.md) refines Relay's Switchline identity while preserving the 4.0 workflows and appearance engine. It is not merged into or installed over stable Relay 4.0. The editable artwork, FigCraft comparison, test report and local build instructions are documented there.
+
 Historical 3.0 evidence: [3.0 release notes](RELEASE-NOTES-3.0.md) · [Native test results](TEST-REPORT-3.0.md) · [Appearance Studio](docs/APPEARANCE-STUDIO.md) · [Editable designs](docs/PENPOT-3.0.md)
 
 ![Relay 3 Appearance Studio beside a live Windows PowerShell session](docs/media/relay3-studio.png)
