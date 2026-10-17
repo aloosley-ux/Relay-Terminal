@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { invoke } from '@tauri-apps/api/core';
-import { X, Check, Copy, Download, Upload, RotateCcw, Palette, SlidersHorizontal, Type, Image } from 'lucide-react';
+import { Check, Copy, Download, Upload, RotateCcw, Palette, SlidersHorizontal, Type, Image, X } from 'lucide-react';
 import { ansiKeys, builtInThemes, exportTheme, importTheme, resolveAppearance, type AppearanceChoice, type AppearanceStore, type AppearanceTheme } from './appearance';
 import type { Session } from './types';
 

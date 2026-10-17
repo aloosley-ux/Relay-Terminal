@@ -231,6 +231,10 @@ Theme tiles show the real preset preview above their names; hover changes the bo
 
 State chips use a raised surface, border and caption text. Semantic success, amber and danger identify process state. Dialogs use bounded height with internal scrolling; their larger headings never become hero typography.
 
+## Icons
+
+Use `lucide-react` for utility and interface icons throughout the application. Keep icons at the size specified by their owning control, and inherit colour from that control through `currentColor` so all five application themes continue to work. The approved Switchline mark is brand artwork and remains the sole intentional exception; do not use it as an action or navigation glyph. Avoid CSS masks and parallel hand-drawn icon families for UI controls.
+
 Control colour transitions take (100ms). Ambient drift is opt-in, uses the configured speed (30s default) and pauses while hidden or minimised. Reduced motion disables transitions and animation. Avoid animating ordinary shell output or layout changes.
 
 ## Do's and Don'ts
