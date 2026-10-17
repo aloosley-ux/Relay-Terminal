@@ -1,6 +1,6 @@
 [package]
 name = "relay-terminal"
-version = "5.0.0"
+version = "5.1.0"
 description = "An intuitive PowerShell terminal for Windows"
 authors = ["Relay"]
 edition = "2021"

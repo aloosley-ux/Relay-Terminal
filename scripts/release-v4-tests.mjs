@@ -4,7 +4,7 @@ import path from 'node:path';
 import {chromium} from 'playwright';
 const root=process.cwd(),exe=path.resolve(process.argv[2] && !process.argv[2].startsWith('--') ? process.argv[2] : 'src-tauri/target/release/relay-terminal.exe');
 const portBase=30000+Math.floor(Math.random()*20000);
-const cases=[['command-windows','command-native.mjs',false,false],['command-pwsh','command-native.mjs',true,false],['regression','desktop-regression.mjs',false,true],['acceptance','desktop-acceptance.mjs',true,true],['interactions','desktop-interactions.mjs',false,false],['appearance','appearance-native.mjs',false,false],['advanced','command-advanced.mjs',false,false],['captures','capture-v4.mjs',false,false]];
+const cases=[['command-windows','command-native.mjs',false,false],['command-pwsh','command-native.mjs',true,false],['regression','desktop-regression.mjs',false,true],['acceptance','desktop-acceptance.mjs',true,true],['interactions','desktop-interactions.mjs',false,false],['appearance-studio','appearance-studio-native.mjs',false,false],['advanced','command-advanced.mjs',false,false],['captures','capture-v4.mjs',false,false]];
 const summary=[];
 for(const [index,[name,script,pwsh,seed]] of cases.entries()){
  if(process.argv.includes('--only') && process.argv[process.argv.indexOf('--only')+1]!==name)continue;

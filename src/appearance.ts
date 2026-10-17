@@ -7,9 +7,9 @@ export interface AppearanceTheme {
   terminal: Required<Pick<ITheme, 'background' | 'foreground' | 'cursor' | 'selectionBackground'>> & Record<typeof ansiKeys[number], string>;
   fontFamily: string; fontSize: number; lineHeight: number; letterSpacing: number; padding: number;
   cursorStyle: 'bar' | 'block' | 'underline'; cursorBlink: boolean;
-  background: { type: 'solid' | 'gradient' | 'wallpaper' | 'ambient'; image: string; from: string; to: string; angle: number; opacity: number; blur: number; intensity: number; animated: boolean; speed: number };
+  background: { type: 'solid' | 'gradient' | 'wallpaper' | 'ambient'; image: string; from: string; to: string; angle: number; opacity: number; blur: number; intensity: number; animated: boolean; speed: number; positionX?: number; positionY?: number };
 }
-export interface AppearanceChoice { appTheme: string; terminalTheme: string; custom?: AppearanceTheme }
+export interface AppearanceChoice { appTheme: string; terminalTheme: string; custom?: AppearanceTheme; appCustom?: AppearanceTheme; tabIdentity?: { color: string; icon: 'terminal' | 'folder' | 'code' | 'server' | 'star' } }
 export interface AppearanceStore { version: 1; global: AppearanceChoice; workspaces: Record<string, AppearanceChoice>; sessions: Record<string, AppearanceChoice>; themes: AppearanceTheme[]; followSystem?: boolean }
 const darkAnsi = ['#273442','#d99596','#96bca3','#d7bb87','#95b4d8','#b8a4d3','#8dbbc3','#d4dce5','#8292a3','#efb2b1','#b5d4bc','#ecd1a2','#b8cfee','#d6bfe9','#afd9df','#f3f6fa'];
 const lightAnsi = ['#293742','#ad3c48','#32694d','#806022','#385f9c','#78528d','#236f7d','#687582','#6c7e89','#b74653','#387452','#886823','#456ba7','#855c9a','#2d7886','#79858e'];
@@ -37,8 +37,8 @@ export function resolveAppearance(store: AppearanceStore, session?: Pick<Session
   const choice=session&&store.sessions[session.key] || session?.workspaceId&&store.workspaces[session.workspaceId] || global;
   const all=[...builtInThemes,...store.themes];
   const terminal=choice.custom || all.find(t=>t.id===choice.terminalTheme) || harbor;
-  const app=all.find(t=>t.id===choice.appTheme) || harbor;
-  return {choice,terminal,app:choice.custom&&choice.appTheme===choice.terminalTheme?choice.custom:app};
+  const app=choice.appCustom || all.find(t=>t.id===choice.appTheme) || harbor;
+  return {choice,terminal,app:choice.appCustom || (choice.custom&&choice.appTheme===choice.terminalTheme?choice.custom:app)};
 }
 const color=/^#[0-9a-f]{6}$/i;
 const imagePattern=/^(?:|\/wallpapers\/tideland\.svg|data:image\/(?:png|jpeg|webp);base64,[A-Za-z0-9+/=]+)$/;
@@ -52,10 +52,11 @@ export function validateTheme(value: unknown): AppearanceTheme {
   if(typeof t.fontFamily!=='string'||t.fontFamily.length>200||/[;{}<>]/.test(t.fontFamily)||!number(t.fontSize,10,32)||!number(t.lineHeight,1,2)||!number(t.letterSpacing,-1,4)||!number(t.padding,4,48)||!['bar','block','underline'].includes(t.cursorStyle)||typeof t.cursorBlink!=='boolean') throw Error('Typography or cursor settings are invalid.');
   const b=t.background;
   if(!b||!['solid','gradient','wallpaper','ambient'].includes(b.type)||typeof b.image!=='string'||b.image.length>5600000||!imagePattern.test(b.image)||!color.test(b.from)||!color.test(b.to)||!number(b.opacity,.35,1)||!number(b.intensity,0,1)||!number(b.blur,0,40)||!number(b.angle,0,360)||!number(b.speed,10,120)||typeof b.animated!=='boolean') throw Error('Background settings are invalid. Use a local PNG, JPEG or WebP under 4 MB.');
+  if (b.positionX !== undefined && !number(b.positionX,0,100) || b.positionY !== undefined && !number(b.positionY,0,100)) throw Error('Wallpaper position must be between 0 and 100.');
   return {id:t.id,name:t.name,mode:t.mode,app:Object.fromEntries(['background','raised','text','muted','accent','border'].map(k=>[k,t.app[k as keyof AppColors]])) as AppColors,
     terminal:Object.fromEntries(['background','foreground','cursor','selectionBackground',...ansiKeys].map(k=>[k,t.terminal[k as keyof AppearanceTheme['terminal']]])) as AppearanceTheme['terminal'],
     fontFamily:t.fontFamily,fontSize:t.fontSize,lineHeight:t.lineHeight,letterSpacing:t.letterSpacing,padding:t.padding,cursorStyle:t.cursorStyle,cursorBlink:t.cursorBlink,
-    background:{type:b.type,image:b.image,from:b.from,to:b.to,angle:b.angle,opacity:b.opacity,blur:b.blur,intensity:b.intensity,animated:b.animated,speed:b.speed}};
+    background:{type:b.type,image:b.image,from:b.from,to:b.to,angle:b.angle,opacity:b.opacity,blur:b.blur,intensity:b.intensity,animated:b.animated,speed:b.speed,...(b.positionX===undefined?{}:{positionX:b.positionX}),...(b.positionY===undefined?{}:{positionY:b.positionY})}};
 }
 export function importTheme(text: string) {
   if(text.length>6000000) throw Error('Theme exceeds 6 MB.');

@@ -3,9 +3,9 @@ import type { CommandBlock } from './commandOutput';
 import { records, terminalText } from './terminals';
 
 export interface TerminalMenuState { x: number; y: number; key: string; block?: CommandBlock; selection: string }
-export default function TerminalMenu({ state, close, copy, paste, find, output }: {
+export default function TerminalMenu({ state, close, copy, paste, find, output, appearance }: {
   state: TerminalMenuState; close: () => void; copy: (text: string) => void;
-  paste: () => void; find: () => void; output: (block?: CommandBlock) => void;
+  paste: () => void; find: () => void; output: (block?: CommandBlock) => void; appearance: () => void;
 }) {
   const ref = useRef<HTMLDivElement>(null);
   const record = records.get(state.key);
@@ -40,6 +40,8 @@ export default function TerminalMenu({ state, close, copy, paste, find, output }
     {item('Paste', paste, false, 'Ctrl ⇧ V')}
     {item('Select all', () => record?.terminal.selectAll())}
     {item('Find in terminal', find)}
+    <hr />
+    {item('Quick appearance…', appearance)}
     <hr />
     {item('Clear scrollback', () => { record?.commands.clear(); record?.terminal.clear(); })}
   </div>;
