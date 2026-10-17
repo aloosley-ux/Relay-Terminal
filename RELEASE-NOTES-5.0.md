@@ -4,7 +4,7 @@ Relay Terminal 5.0.0 completes the Switchline identity integration and packages 
 
 ## Identity and Windows integration
 
-- Applies the accepted Switchline mark in the application chrome and uses the matching icon artwork for the Windows executable, taskbar, NSIS installer, uninstaller and Start menu shortcut.
+- Applies the accepted Switchline mark in the application chrome and embeds matching icon artwork in the Windows executable and NSIS installer/uninstaller. Existing Windows taskbar pins may retain the old cached image from an earlier version; the approved artwork is present in the installed 5.0 executable. Run `scripts/repair-windows-shortcut-icons.ps1` to repair existing shortcut icon paths; if Windows still shows the old cache, unpin and re-pin Relay Terminal from Start.
 - Retains the original product name and application identity so Windows sees one Relay Terminal installation.
 - Uses the configured Microsoft WebView2 bootstrapper when the Evergreen runtime is missing.
 - Keeps the native VectorCraft and FigCraft identity files in `design/relay4-identity/` for future editing.

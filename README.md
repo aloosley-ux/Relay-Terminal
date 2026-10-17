@@ -8,7 +8,11 @@ Relay Terminal 5.0.0 is packaged locally from this branch. The upload-ready exec
 
 [5.0 release notes](RELEASE-NOTES-5.0.md) · [5.0 validation](TEST-REPORT-5.0.md) · [4.0 release notes](RELEASE-NOTES-4.0.md) · [Command copying](docs/COMMAND-OUTPUT.md)
 
-Relay 5.0 integrates the accepted Switchline identity into the original `com.relay.terminal` product, including the Windows executable, installer, Start menu, and taskbar icon resources. The editable VectorCraft and FigCraft originals remain under [`design/relay4-identity/`](design/relay4-identity/README.md). Relay's five existing appearance themes and customization model remain unchanged.
+Relay 5.0 integrates the accepted Switchline identity into the original `com.relay.terminal` product, including the Windows executable and installer icon resources.
+
+**Existing Windows taskbar pins:** Windows may keep showing a cached Relay 4.0 icon even when the installed 5.0 executable contains the correct Switchline icon. Run [the Windows shortcut-icon repair](scripts/repair-windows-shortcut-icons.ps1) to update the existing taskbar and Start menu shortcut icon paths without restarting Explorer. If Windows still shows the cached old image, unpin the old Relay taskbar entry and pin Relay Terminal again from Start. This is a Windows shortcut/icon-cache issue, not a reason to rebuild or redesign the release.
+
+The editable VectorCraft and FigCraft originals remain under [`design/relay4-identity/`](design/relay4-identity/README.md). Relay's five existing appearance themes and customization model remain unchanged.
 
 Historical 3.0 evidence: [3.0 release notes](RELEASE-NOTES-3.0.md) · [Native test results](TEST-REPORT-3.0.md) · [Appearance Studio](docs/APPEARANCE-STUDIO.md) · [Editable designs](docs/PENPOT-3.0.md)
 

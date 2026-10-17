@@ -19,6 +19,10 @@ Validation was run on the packaged Windows release executable and generated NSIS
 
 The upgrade simulation used the archived 4.0 executable as the first payload and the 5.0 release executable as the second payload. Both generated installers used `com.relay.validation.upgrade` and an `artifacts/` install directory, so the test exercised replacement and settings retention without running either installer against the production `com.relay.terminal` registration or its user data.
 
+## Windows shortcut icon follow-up (17 October 2026)
+
+The icon-resource checks above validate the Windows binaries, **not an already-pinned Windows taskbar image**. An existing pinned Relay shortcut still displayed a purple legacy terminal icon despite both the installed 5.0 executable and the standalone release executable extracting the approved Switchline icon. The existing taskbar and Start menu shortcuts had an empty explicit icon path (` ,0 `). Their icon locations were updated to point explicitly at the installed Relay executable and a Windows shell icon refresh was requested, without restarting Explorer or modifying the application's settings. Extracting the icon from the updated pinned shortcut now shows Switchline. **A live taskbar visual refresh is not independently verified**; if Windows still caches the older pinned graphic, unpin it and re-pin Relay Terminal from Start. A repeatable repair script is provided at `scripts/repair-windows-shortcut-icons.ps1`. The release installer and executable were not rebuilt for this Windows icon-cache correction.
+
 ## Release limits
 
 - The package is unsigned. Windows may show the usual publisher warning until the release is signed.
