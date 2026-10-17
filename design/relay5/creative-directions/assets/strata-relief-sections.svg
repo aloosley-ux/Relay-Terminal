@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="941.5" height="332.75" viewBox="0 0 941.5 332.75">
+  <title>Untitled-1</title>
+  <g id="Selection">
+    <path id="Lower_cut___oxide" data-name="Lower cut · oxide" d="M0.75 152.75 C120.75 112.75 180.75 142.75 290.75 102.75 C410.75 58.75 480.75 132.75 590.75 94.75 C720.75 50.75 800.75 112.75 940.75 62.75 L940.75 332.75 L0.75 332.75 Z" fill="#8e503d"/>
+    <path id="Middle_relief___sienna" data-name="Middle relief · sienna" d="M0.75 120.75 C120.75 80.75 180.75 110.75 290.75 70.75 C410.75 26.75 480.75 100.75 590.75 62.75 C720.75 18.75 800.75 80.75 940.75 30.75 L940.75 62.75 C800.75 112.75 720.75 50.75 590.75 94.75 C480.75 132.75 410.75 58.75 290.75 102.75 C180.75 142.75 120.75 112.75 0.75 152.75 Z" fill="#c99170"/>
+    <path id="Upper_relief___wheat" data-name="Upper relief · wheat" d="M0.75 90.75 C120.75 50.75 180.75 80.75 290.75 40.75 C410.75 -3.25 480.75 70.75 590.75 32.75 C720.75 -11.25 800.75 50.75 940.75 0.75 L940.75 30.75 C800.75 80.75 720.75 18.75 590.75 62.75 C480.75 100.75 410.75 26.75 290.75 70.75 C180.75 110.75 120.75 80.75 0.75 120.75 Z" fill="#d8b27b"/>
+    <path id="Topographic_trace" data-name="Topographic trace" d="M0.75 90.75 C120.75 50.75 180.75 80.75 290.75 40.75 C410.75 -3.25 480.75 70.75 590.75 32.75 C720.75 -11.25 800.75 50.75 940.75 0.75" fill="none" stroke="#f0d7ac" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+</svg>

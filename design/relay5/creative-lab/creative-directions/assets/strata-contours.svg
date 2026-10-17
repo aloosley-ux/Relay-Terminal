@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1000" height="620" viewBox="0 0 1000 620">
+  <title>relay-creative-directions</title>
+  <g id="Layer_1" data-name="Layer 1">
+    <path id="Strata_field" data-name="Strata field" d="M0 0 L1000 0 L1000 620 L0 620 Z" fill="#24201d"/>
+    <text transform="matrix(1 0 0 1 50 64)" x="0" y="0" xml:space="preserve" font-family="&apos;Segoe UI&apos;" font-size="22" fill="#f2ede5"><tspan x="0" y="0">STRATA  /  WORK SURFACES WITH DEPTH</tspan></text>
+    <text transform="matrix(1 0 0 1 50 94)" x="0" y="0" xml:space="preserve" font-family="&apos;Segoe UI&apos;" font-size="12" fill="#bcb0a2"><tspan x="0" y="0">Contour relief is optional chrome; terminal ink and selection stay opaque above it.</tspan></text>
+    <path id="Lower_cut___oxide" data-name="Lower cut · oxide" d="M40 440 C160 400 220 430 330 390 C450 346 520 420 630 382 C760 338 840 400 980 350 L980 620 L40 620 Z" fill="#8e503d"/>
+    <path id="Middle_relief___sienna" data-name="Middle relief · sienna" d="M40 408 C160 368 220 398 330 358 C450 314 520 388 630 350 C760 306 840 368 980 318 L980 350 C840 400 760 338 630 382 C520 420 450 346 330 390 C220 430 160 400 40 440 Z" fill="#c99170"/>
+    <path id="Upper_relief___wheat" data-name="Upper relief · wheat" d="M40 378 C160 338 220 368 330 328 C450 284 520 358 630 320 C760 276 840 338 980 288 L980 318 C840 368 760 306 630 350 C520 388 450 314 330 358 C220 398 160 368 40 408 Z" fill="#d8b27b"/>
+    <path id="Topographic_trace" data-name="Topographic trace" d="M40 378 C160 338 220 368 330 328 C450 284 520 358 630 320 C760 276 840 338 980 288" fill="none" stroke="#f0d7ac" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <path id="Ribbon_section" data-name="Ribbon section" d="M90 260 C230 218 330 265 450 224 C570 183 650 208 780 242 C910 276 900 264 960 236" fill="none" stroke="#d0c4b3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <path id="Ribbon_contour" data-name="Ribbon contour" d="M90 288 C230 246 330 293 450 252 C570 211 650 236 780 270 C910 304 900 292 960 264" fill="none" stroke="#d0c4b3" stroke-linecap="round" stroke-linejoin="round"/>
+    <path id="Ribbon_contour_2" data-name="Ribbon contour 2" d="M90 316 C230 274 330 321 450 280 C570 239 650 264 780 298 C910 332 900 320 960 292" fill="none" stroke="#d0c4b3" stroke-linecap="round" stroke-linejoin="round"/>
+    <text transform="matrix(1 0 0 1 50 154)" x="0" y="0" xml:space="preserve" font-family="&apos;Segoe UI&apos;" font-size="12" fill="#f2ede5"><tspan x="0" y="0">Contour fields become panel edges, navigation seams and quiet ambient surfaces.</tspan></text>
+    <text transform="matrix(1 0 0 1 50 552)" x="0" y="0" xml:space="preserve" font-family="&apos;Cascadia Mono&apos;" font-size="10" fill="#d8b27b"><tspan x="0" y="0">GEOMETRY: VECTOR     ·     MATERIAL: PHOTO     ·     RESPONSE: MOTION</tspan></text>
+  </g>
+</svg>

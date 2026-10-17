@@ -2,13 +2,13 @@
 
 **A real PowerShell terminal, with the bits I kept wishing were in the same window.**
 
-**Windows · Tauri 2 · Rust/ConPTY · React/TypeScript · xterm.js · v4.0**
+**Windows · Tauri 2 · Rust/ConPTY · React/TypeScript · xterm.js · v5.0.0**
 
-Download [Relay Terminal 4.0.0](https://github.com/aloosley-ux/Relay-Terminal/releases/tag/v4.0.0): [Windows installer](https://github.com/aloosley-ux/Relay-Terminal/releases/download/v4.0.0/Relay-Terminal_4.0.0_x64-setup.exe) · [Standalone executable](https://github.com/aloosley-ux/Relay-Terminal/releases/download/v4.0.0/Relay-Terminal_4.0.0_x64.exe) · [SHA-256 checksums](https://github.com/aloosley-ux/Relay-Terminal/releases/download/v4.0.0/SHA256SUMS.txt).
+Relay Terminal 5.0.0 is packaged locally from this branch. The upload-ready executable, NSIS installer, release notes, test report, and SHA-256 manifest are placed in [`Build/Release-5.0.0/`](Build/Release-5.0.0/). No public 5.0.0 download is claimed here.
 
-[4.0 release notes](RELEASE-NOTES-4.0.md) · [4.0 validation](TEST-REPORT-4.0.md) · [Command copying](docs/COMMAND-OUTPUT.md) · [Relay 4 Penpot](docs/PENPOT-4.0.md)
+[5.0 release notes](RELEASE-NOTES-5.0.md) · [5.0 validation](TEST-REPORT-5.0.md) · [4.0 release notes](RELEASE-NOTES-4.0.md) · [Command copying](docs/COMMAND-OUTPUT.md)
 
-The separate [`relay4-identity-refinement` experiment](design/relay4-identity/README.md) refines Relay's Switchline identity while preserving the 4.0 workflows and appearance engine. It is not merged into or installed over stable Relay 4.0. The editable artwork, FigCraft comparison, test report and local build instructions are documented there.
+Relay 5.0 integrates the accepted Switchline identity into the original `com.relay.terminal` product, including the Windows executable, installer, Start menu, and taskbar icon resources. The editable VectorCraft and FigCraft originals remain under [`design/relay4-identity/`](design/relay4-identity/README.md). Relay's five existing appearance themes and customization model remain unchanged.
 
 Historical 3.0 evidence: [3.0 release notes](RELEASE-NOTES-3.0.md) · [Native test results](TEST-REPORT-3.0.md) · [Appearance Studio](docs/APPEARANCE-STUDIO.md) · [Editable designs](docs/PENPOT-3.0.md)
 
@@ -16,7 +16,7 @@ Historical 3.0 evidence: [3.0 release notes](RELEASE-NOTES-3.0.md) · [Native te
 
 Relay started as a personal replacement for juggling ConEmu tabs, project folders, commands and local development services. Instead of building another dashboard that *looks* like a terminal, it runs actual PowerShell sessions and gives them a workspace.
 
-Relay 3 opens into a floating terminal-first window. Its optional navigator, terminal-only mode and Appearance Studio keep supporting tools close without permanently reserving terminal space. Five themes, independent application/terminal styling and scoped visual overrides update live sessions without restarting their shells. It runs locally without a Relay account or a background service.
+Relay opens into a floating terminal-first window. Its optional navigator, terminal-only mode and Appearance Studio keep supporting tools close without permanently reserving terminal space. Five themes, independent application/terminal styling and scoped visual overrides update live sessions without restarting their shells. It runs locally without a Relay account or a background service.
 
 > **The idea:** keep the terminal real, make common work easier to reach, and don't run a pile of background services just to draw a UI.
 
@@ -43,7 +43,7 @@ A command palette, keyboard shortcuts, Appearance Studio, saved actions and work
 
 ## Where it stands
 
-**Relay is Windows-focused.** These are its current capabilities and boundaries. The v2.0 performance measurements below are historical samples; the [4.0 test report](TEST-REPORT-4.0.md) records current native acceptance and the remaining verification limits.
+**Relay is Windows-focused.** These are its current capabilities and boundaries. The v2.0 performance measurements below are historical samples; the [5.0 test report](TEST-REPORT-5.0.md) records the current packaged-app checks and remaining verification limits.
 
 | Works today | Still limited / not promised |
 | --- | --- |
@@ -51,12 +51,12 @@ A command palette, keyboard shortcuts, Appearance Studio, saved actions and work
 | Named tasks with output, elapsed time and interruption | Task discovery currently favours Node and Cargo; other projects can use manually entered commands. |
 | Local files, projects, settings and actions | The file viewer is bounded plain text, not a full editor or binary viewer. |
 | Cortana service actions through an existing local controller | Integrations depend on that controller being installed/configured; RDC lifecycle management is read-only. |
-| Windows release EXE and NSIS installer | Isolated-identity install/uninstall passes with the identical payload; clean-machine and installed-product upgrade testing remain unverified. Binaries are unsigned. |
-| Windows PowerShell tested end to end | PowerShell 7.6.7 and Windows PowerShell pass 4.0 native tests; Vim, cmd and Git Bash child workflows are exercised. Other applications are not exhaustively tested. |
+| Windows release EXE and NSIS installer | See the 5.0 test report for packaged GUI, icon-resource, and isolated installer checks. The release is unsigned; clean-machine validation remains a limitation. |
+| Windows PowerShell tested end to end | PowerShell 7.6.7 and Windows PowerShell have native test coverage; Vim, cmd and Git Bash child workflows are exercised. Other applications are not exhaustively tested. |
 
 A custom PowerShell prompt can also disable Relay's current-directory and outcome reporting; the terminal itself still functions.
 
-For details, read [the 4.0 test report](TEST-REPORT-4.0.md) and [release notes](RELEASE-NOTES-4.0.md).
+For details, read [the 5.0 test report](TEST-REPORT-5.0.md) and [release notes](RELEASE-NOTES-5.0.md).
 
 ## How it was made
 
@@ -100,14 +100,14 @@ Those are **measured samples, not minimum-spec guarantees**. The full Windows We
 
 This repository tracks the **source**, not personal test data or built executables.
 
-On the development machine, the existing release files live under `Build/`:
+On the development machine, the 5.0.0 release files live under `Build/Release-5.0.0/`:
 
-- `Relay Terminal.exe` — standalone Windows executable.
-- `Relay Terminal_4.0.0_x64-setup.exe` — NSIS installer.
+- `Relay-Terminal_5.0.0_x64.exe` — standalone Windows executable.
+- `Relay-Terminal_5.0.0_x64-setup.exe` — NSIS installer.
 
-Built executables are distributed as assets on the [4.0.0 GitHub release](https://github.com/aloosley-ux/Relay-Terminal/releases/tag/v4.0.0), alongside checksums and validation documentation. They are not stored in Git source history. The release uses versioned filenames; local copies remain under `Build/`, with upload-ready assets under `Build/Release-4.0.0/`.
+The folder also contains release notes, the validation report and `SHA256SUMS.txt`. Generated executables are excluded from Git history.
 
-Relay requires Windows 10 (1809+) or Windows 11 and WebView2. Use PowerShell 7 if installed; Windows PowerShell works too. The builds are currently unsigned.
+Relay requires Windows 10 (1809+) or Windows 11 and Microsoft Edge WebView2. The NSIS installer uses Microsoft's WebView2 bootstrapper when the runtime is missing, so installation then requires an internet connection. Windows PowerShell is available by default; PowerShell 7 is used when installed. The release is currently unsigned.
 
 ## Build from source
 
@@ -142,7 +142,7 @@ Generated builds, logs, machine-specific settings, benchmark profiles and screen
 
 No fake percentage-complete badge, no grand promises. The obvious next steps are cleaner onboarding away from the original machine, more portable project/task discovery, fuller keyboard/accessibility work, additional shell testing, and clean-PC installer verification.
 
-If those get built and independently tested, this README can change with the evidence.
+The 5.0 release continues to preserve the current product workflows; proposed workbench concepts remain design references until individually approved and implemented.
 
 ## Source, license and attribution
 

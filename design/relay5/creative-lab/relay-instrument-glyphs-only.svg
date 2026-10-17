@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="711" height="75" viewBox="0 0 711 75">
+  <title>Untitled-1</title>
+  <g id="Selection">
+    <path id="TRACE___live_signal_path" data-name="TRACE · live signal path" d="M1.5 37.5 L19.5 37.5 L32.5 21.5 L44.5 54.5 L57.5 29.5 L85.5 29.5" fill="none" stroke="#b7c8c9" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+    <path id="RECORD___saved_action_ledger" data-name="RECORD · saved action ledger" d="M228.5 10.5 L265.5 10.5 L278.5 23.5 L278.5 64.5 L228.5 64.5 Z M265.5 10.5 L265.5 23.5 L278.5 23.5 M240.5 34.5 L266.5 34.5 M240.5 45.5 L266.5 45.5 M240.5 56.5 L255.5 56.5" fill="none" stroke="#b7c8c9" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+    <path id="ORBIT___relational_workspace" data-name="ORBIT · relational workspace" d="M426.5 37.5 C426.5 17.5 443.5 1.5 463.5 1.5 C483.5 1.5 500.5 17.5 500.5 37.5 C500.5 57.5 483.5 73.5 463.5 73.5 C443.5 73.5 426.5 57.5 426.5 37.5 M429.5 55.5 C461.5 55.5 470.5 19.5 497.5 19.5" fill="none" stroke="#b7c8c9" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+    <path id="MEASURE___adjustable_split_control" data-name="MEASURE · adjustable split control" d="M634.5 9.5 L634.5 65.5 L708.5 65.5 M651.5 23.5 L651.5 41.5 L708.5 41.5 M708.5 9.5 L708.5 65.5 M643.5 16.5 L653.5 16.5 M643.5 58.5 L653.5 58.5 M699.5 16.5 L709.5 16.5 M699.5 58.5 L709.5 58.5" fill="none" stroke="#b7c8c9" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+    <path id="Signal_junction" data-name="Signal junction" d="M40.5 37.5 C40.5 35.843 41.843 34.5 43.5 34.5 C45.157 34.5 46.5 35.843 46.5 37.5 C46.5 39.157 45.157 40.5 43.5 40.5 C41.843 40.5 40.5 39.157 40.5 37.5 Z" fill="#f3b85b"/>
+    <path id="Record_fold_marker" data-name="Record fold marker" d="M273.5 26 C273.5 24.619 274.619 23.5 276 23.5 C277.381 23.5 278.5 24.619 278.5 26 C278.5 27.381 277.381 28.5 276 28.5 C274.619 28.5 273.5 27.381 273.5 26 Z" fill="#f3b85b"/>
+    <path id="Orbit_session_node" data-name="Orbit session node" d="M425.5 39.5 C425.5 37.291 427.291 35.5 429.5 35.5 C431.709 35.5 433.5 37.291 433.5 39.5 C433.5 41.709 431.709 43.5 429.5 43.5 C427.291 43.5 425.5 41.709 425.5 39.5 Z" fill="#73d9c5"/>
+    <path id="Orbit_process_node" data-name="Orbit process node" d="M491.5 19.5 C491.5 17.291 493.291 15.5 495.5 15.5 C497.709 15.5 499.5 17.291 499.5 19.5 C499.5 21.709 497.709 23.5 495.5 23.5 C493.291 23.5 491.5 21.709 491.5 19.5 Z" fill="#f3b85b"/>
+    <path id="Orbit_port_node" data-name="Orbit port node" d="M494.5 55 C494.5 53.067 496.067 51.5 498 51.5 C499.933 51.5 501.5 53.067 501.5 55 C501.5 56.933 499.933 58.5 498 58.5 C496.067 58.5 494.5 56.933 494.5 55 Z" fill="#b7c8c9"/>
+    <path id="Measure_grip" data-name="Measure grip" d="M650.5 45 C650.5 43.067 652.067 41.5 654 41.5 C655.933 41.5 657.5 43.067 657.5 45 C657.5 46.933 655.933 48.5 654 48.5 C652.067 48.5 650.5 46.933 650.5 45 Z" fill="#f3b85b"/>
+  </g>
+</svg>

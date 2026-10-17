@@ -1,6 +1,6 @@
 # Relay 4.0 identity refinement
 
-This branch preserves Relay 4.0's terminal-first layout, workflows, safety boundaries, and appearance engine while refining its identity and reducing verified duplicate controls. The experimental build has a separate Windows app identifier and can run alongside stable Relay 4.0.
+This source package records the identity work integrated into Relay Terminal 5.0.0. Relay keeps the original `com.relay.terminal` identifier, existing terminal-first layout and workflows, safety boundaries, and appearance engine.
 
 ## Switchline identity
 
@@ -12,7 +12,7 @@ The VectorCraft source uses installed Segoe UI and opens without a missing-font 
 
 - [`src/RelayIcons.tsx`](../../src/RelayIcons.tsx) defines the Switchline mark and the bespoke navigation/view glyphs. Each is a small SVG React component with a `size` prop, shared rounded path geometry, and `currentColor` strokes/fills. This lets Relay's existing theme variables set their color. Utility and terminal action icons that were already distinct remain in place.
 - [`src/App.tsx`](../../src/App.tsx) uses the mark and bespoke icons in the existing titlebar and navigation. It removes verified duplicates: terminal name repeated in its active tab, Settings in titlebar and navigation footer, Appearance in titlebar and statusbar, Shortcuts in navigation footer and statusbar, and navigation toggle in the titlebar and tabbar. Workspace selection versus editing, and Copy last output versus Copy all output, remain separate controls.
-- [`src-tauri/icons/`](../../src-tauri/icons/) contains generated Tauri icon assets, including the Windows `.ico`. The stable [`src-tauri/tauri.conf.json`](../../src-tauri/tauri.conf.json) continues to point at `icons/icon.ico`; [`src-tauri/tauri.identity.conf.json`](../../src-tauri/tauri.identity.conf.json) overrides the experiment's product name and identifier only.
+- [`src-tauri/icons/`](../../src-tauri/icons/) contains generated Tauri icon assets, including the Windows `.ico`. The release bundle, NSIS installer, uninstaller, and executable all use the same source icon. The production configuration retains `com.relay.terminal` so a 5.0 install upgrades Relay 4 and uses its existing settings directory.
 
 Regenerate Tauri icons from the editable artwork with:
 
@@ -34,22 +34,18 @@ Curated native captures are in [`evidence/`](evidence/):
 
 ## Experimental build and tests
 
-The build is intentionally separate from the stable Relay 4.0 product identity. The tested files are local under the ignored `artifacts/relay4-identity/` directory:
+The original report below documents the earlier isolated identity experiment; its results are historical evidence, not 5.0 release validation. Current packaged application and installer checks are recorded in [`TEST-REPORT-5.0.md`](../../TEST-REPORT-5.0.md). Local release files are generated under the ignored `Build/Release-5.0.0/` directory.
 
-- `Relay-Identity-Experiment.exe`
-- `Relay-Identity-Experiment-setup.exe` (NSIS installer; built, not installed)
-- `TEST-REPORT.md`
-
-Reproduce the Windows executable and NSIS installer on a Windows development machine with Node/npm, Rust MSVC tools, Visual Studio C++ build tools, and WebView2:
+Build the production Windows executable and NSIS installer on a Windows development machine with Node/npm, Rust MSVC tools, Visual Studio C++ build tools, and WebView2:
 
 ```powershell
 npm install
-npm run tauri -- build --config src-tauri/tauri.identity.conf.json
+npm run release
 ```
 
-The Tauri build outputs are under `src-tauri/target/release/` and `src-tauri/target/release/bundle/nsis/`. Copy the reviewed executable and installer into the local `artifacts/relay4-identity/` folder; do not commit either binary, the build cache, or temporary test profiles.
+`npm run release` builds with the production identity and release assets are copied by `scripts/package-v5.ps1`. Do not commit generated binaries, build caches, or disposable test profiles.
 
-The committed [`TEST-REPORT.md`](TEST-REPORT.md) records the Rust, native GUI, appearance, interaction, acceptance, advanced, and Windows command verification results and outstanding limits. The detailed local copy remains at `artifacts/relay4-identity/TEST-REPORT.md`.
+The committed [`TEST-REPORT.md`](TEST-REPORT.md) remains attached to the historical identity experiment. The current release report is [`TEST-REPORT-5.0.md`](../../TEST-REPORT-5.0.md).
 
 The experiment changes branding and the specific presentation cleanups above. It does not replace shell/session logic, workspaces, tasks, process ownership, safety boundaries, or appearance features. In particular, independent application/terminal colors, ANSI palettes, typography, cursor settings, gradients, wallpapers, effects, scoped overrides, and theme import/export continue to use the existing engine. No UI package or new workflow concept was added.
 

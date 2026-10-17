@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="900" height="560" viewBox="0 0 900 560">
+  <title>relay-instrument-glyphs</title>
+  <g id="Layer_1" data-name="Layer 1">
+    <path id="Backdrop___graphite_field" data-name="Backdrop · graphite field" d="M0 0 L900 0 L900 560 L0 560 Z" fill="#101820"/>
+    <path id="Signal_spine___identity_accent" data-name="Signal spine · identity accent" d="M32 32 L35 32 L35 78 L32 78 Z" fill="#f3b85b"/>
+    <path id="Header_rule" data-name="Header rule" d="M56 42 L864 42 L864 43 L56 43 Z" fill="#2b3a46"/>
+    <text transform="matrix(1 0 0 1 56 62)" x="0" y="0" xml:space="preserve" font-family="Consolas" font-size="19" fill="#e9f0eb"><tspan x="0" y="0">RELAY / INSTRUMENT GLYPHS</tspan></text>
+    <text transform="matrix(1 0 0 1 56 91)" x="0" y="0" xml:space="preserve" font-family="&apos;Segoe UI&apos;" font-size="12" fill="#9aaeb6"><tspan x="0" y="0">A custom vector language for live sessions, owned processes and local work.</tspan></text>
+    <path id="Tile_TRACE" data-name="Tile TRACE" d="M47 142 L223 142 C227.971 142 232 146.029 232 151 L232 400 C232 404.971 227.971 409 223 409 L47 409 C42.029 409 38 404.971 38 400 L38 151 C38 146.029 42.029 142 47 142 Z" fill="#16232d" stroke="#344854" stroke-miterlimit="10"/>
+    <path id="Tile_RECORD" data-name="Tile RECORD" d="M257 142 L433 142 C437.971 142 442 146.029 442 151 L442 400 C442 404.971 437.971 409 433 409 L257 409 C252.029 409 248 404.971 248 400 L248 151 C248 146.029 252.029 142 257 142 Z" fill="#16232d" stroke="#344854" stroke-miterlimit="10"/>
+    <path id="Tile_ORBIT" data-name="Tile ORBIT" d="M467 142 L643 142 C647.971 142 652 146.029 652 151 L652 400 C652 404.971 647.971 409 643 409 L467 409 C462.029 409 458 404.971 458 400 L458 151 C458 146.029 462.029 142 467 142 Z" fill="#16232d" stroke="#344854" stroke-miterlimit="10"/>
+    <path id="Tile_MEASURE" data-name="Tile MEASURE" d="M677 142 L853 142 C857.971 142 862 146.029 862 151 L862 400 C862 404.971 857.971 409 853 409 L677 409 C672.029 409 668 404.971 668 400 L668 151 C668 146.029 672.029 142 677 142 Z" fill="#16232d" stroke="#344854" stroke-miterlimit="10"/>
+    <path id="TRACE___live_signal_path" data-name="TRACE · live signal path" d="M93 252 L111 252 L124 236 L136 269 L149 244 L177 244" fill="none" stroke="#b7c8c9" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+    <path id="RECORD___saved_action_ledger" data-name="RECORD · saved action ledger" d="M320 225 L357 225 L370 238 L370 279 L320 279 Z M357 225 L357 238 L370 238 M332 249 L358 249 M332 260 L358 260 M332 271 L347 271" fill="none" stroke="#b7c8c9" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+    <path id="ORBIT___relational_workspace" data-name="ORBIT · relational workspace" d="M518 252 C518 232 535 216 555 216 C575 216 592 232 592 252 C592 272 575 288 555 288 C535 288 518 272 518 252 M521 270 C553 270 562 234 589 234" fill="none" stroke="#b7c8c9" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+    <path id="MEASURE___adjustable_split_control" data-name="MEASURE · adjustable split control" d="M726 224 L726 280 L800 280 M743 238 L743 256 L800 256 M800 224 L800 280 M735 231 L745 231 M735 273 L745 273 M791 231 L801 231 M791 273 L801 273" fill="none" stroke="#b7c8c9" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+    <path id="Signal_junction" data-name="Signal junction" d="M132 252 C132 250.343 133.343 249 135 249 C136.657 249 138 250.343 138 252 C138 253.657 136.657 255 135 255 C133.343 255 132 253.657 132 252 Z" fill="#f3b85b"/>
+    <path id="Record_fold_marker" data-name="Record fold marker" d="M365 240.5 C365 239.119 366.119 238 367.5 238 C368.881 238 370 239.119 370 240.5 C370 241.881 368.881 243 367.5 243 C366.119 243 365 241.881 365 240.5 Z" fill="#f3b85b"/>
+    <path id="Orbit_session_node" data-name="Orbit session node" d="M517 254 C517 251.791 518.791 250 521 250 C523.209 250 525 251.791 525 254 C525 256.209 523.209 258 521 258 C518.791 258 517 256.209 517 254 Z" fill="#73d9c5"/>
+    <path id="Orbit_process_node" data-name="Orbit process node" d="M583 234 C583 231.791 584.791 230 587 230 C589.209 230 591 231.791 591 234 C591 236.209 589.209 238 587 238 C584.791 238 583 236.209 583 234 Z" fill="#f3b85b"/>
+    <path id="Orbit_port_node" data-name="Orbit port node" d="M586 269.5 C586 267.567 587.567 266 589.5 266 C591.433 266 593 267.567 593 269.5 C593 271.433 591.433 273 589.5 273 C587.567 273 586 271.433 586 269.5 Z" fill="#b7c8c9"/>
+    <path id="Measure_grip" data-name="Measure grip" d="M742 259.5 C742 257.567 743.567 256 745.5 256 C747.433 256 749 257.567 749 259.5 C749 261.433 747.433 263 745.5 263 C743.567 263 742 261.433 742 259.5 Z" fill="#f3b85b"/>
+    <text transform="matrix(1 0 0 1 58 342)" x="0" y="0" xml:space="preserve" font-family="Consolas" font-size="13" fill="#e9f0eb"><tspan x="0" y="0">TRACE</tspan></text>
+    <text transform="matrix(1 0 0 1 58 367)" x="0" y="0" xml:space="preserve" font-family="&apos;Segoe UI&apos;" font-size="11" fill="#91a8b0"><tspan x="0" y="0">Session signal</tspan></text>
+    <text transform="matrix(1 0 0 1 268 342)" x="0" y="0" xml:space="preserve" font-family="Consolas" font-size="13" fill="#e9f0eb"><tspan x="0" y="0">RECORD</tspan></text>
+    <text transform="matrix(1 0 0 1 268 367)" x="0" y="0" xml:space="preserve" font-family="&apos;Segoe UI&apos;" font-size="11" fill="#91a8b0"><tspan x="0" y="0">Saved action</tspan></text>
+    <text transform="matrix(1 0 0 1 478 342)" x="0" y="0" xml:space="preserve" font-family="Consolas" font-size="13" fill="#e9f0eb"><tspan x="0" y="0">ORBIT</tspan></text>
+    <text transform="matrix(1 0 0 1 478 367)" x="0" y="0" xml:space="preserve" font-family="&apos;Segoe UI&apos;" font-size="11" fill="#91a8b0"><tspan x="0" y="0">Port relation</tspan></text>
+    <text transform="matrix(1 0 0 1 688 342)" x="0" y="0" xml:space="preserve" font-family="Consolas" font-size="13" fill="#e9f0eb"><tspan x="0" y="0">MEASURE</tspan></text>
+    <text transform="matrix(1 0 0 1 688 367)" x="0" y="0" xml:space="preserve" font-family="&apos;Segoe UI&apos;" font-size="11" fill="#91a8b0"><tspan x="0" y="0">Pane control</tspan></text>
+    <text transform="matrix(1 0 0 1 38 480)" x="0" y="0" xml:space="preserve" font-family="Consolas" font-size="10" fill="#728992"><tspan x="0" y="0">VECTORCRAFT STUDY  /  live geometry · editable strokes · palette-ready accents</tspan></text>
+  </g>
+</svg>

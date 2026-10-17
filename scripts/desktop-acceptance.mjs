@@ -73,26 +73,32 @@ await page.getByRole('button', { name: `Open localhost:${port}`, exact: true }).
 const ownPort = page.locator('.port-row').filter({ has: page.getByRole('button', { name: `Open localhost:${port}`, exact: true }) });
 assert.match(await ownPort.innerText(), /Relay session/);
 const serviceBefore = await native('service_inventory');
-assert.equal(serviceBefore.services.filter(s => s.group === 'Cortana' && s.port).length, 7);
-const rdc = serviceBefore.services.find(s => s.id === 'desktop-commander');
-// Availability is environment state. Acceptance must not start an external service.
-assert.equal(rdc.controlAvailable, false); assert.deepEqual(rdc.actions, []);
-log('RDC availability observed without changing the service', `${rdc.processIds.length} process IDs`);
-await page.locator('.process-row').filter({ has: page.getByText('Remote Desktop Commander', { exact: true }) }).click();
-assert.match(await page.locator('.process-inspector').innerText(), /Controls remain with its owner/);
-await page.locator('.process-row').filter({ has: page.getByText('Model Router', { exact: true }) }).click();
-await page.locator('.process-inspector').getByRole('button', { name: 'Start', exact: true }).click();
-await page.getByRole('dialog', { name: 'Start Model Router', exact: true }).waitFor();
-await page.getByRole('button', { name: 'Cancel', exact: true }).click();
 const forbidden = await native('service_control', { id: "router'; Stop-Process", action: 'Start' }).then(() => 'unexpected', e => String(e));
 assert.match(forbidden, /Invalid service identifier/);
-log('Canonical Cortana controls reviewed/cancelled; RDC observed; invalid controller ID refused');
-await page.locator('.process-row').filter({ has: page.getByText('Model Router', { exact: true }) }).click();
-if (await page.getByRole('button', { name: 'Router output', exact: true }).count()) {
-  await page.getByRole('button', { name: 'Router output', exact: true }).click();
-  await page.waitForFunction(() => document.querySelector('.log-path')?.textContent.includes('router.out.log'));
-  assert(await page.locator('.log-preview').innerText());
-  log('Existing service log loads without starting service');
+const cortanaServices = serviceBefore.services.filter(s => s.group === 'Cortana' && s.port);
+if (cortanaServices.length) {
+  assert.equal(cortanaServices.length, 7);
+  const rdc = serviceBefore.services.find(s => s.id === 'desktop-commander');
+  // Availability is environment state. Acceptance must not start an external service.
+  assert.equal(rdc.controlAvailable, false); assert.deepEqual(rdc.actions, []);
+  log('RDC availability observed without changing the service', `${rdc.processIds.length} process IDs`);
+  await page.locator('.process-row').filter({ has: page.getByText('Remote Desktop Commander', { exact: true }) }).click();
+  assert.match(await page.locator('.process-inspector').innerText(), /Controls remain with its owner/);
+  await page.locator('.process-row').filter({ has: page.getByText('Model Router', { exact: true }) }).click();
+  await page.locator('.process-inspector').getByRole('button', { name: 'Start', exact: true }).click();
+  await page.getByRole('dialog', { name: 'Start Model Router', exact: true }).waitFor();
+  await page.getByRole('button', { name: 'Cancel', exact: true }).click();
+  log('Canonical Cortana controls reviewed/cancelled; RDC observed; invalid controller ID refused');
+  await page.locator('.process-row').filter({ has: page.getByText('Model Router', { exact: true }) }).click();
+  if (await page.getByRole('button', { name: 'Router output', exact: true }).count()) {
+    await page.getByRole('button', { name: 'Router output', exact: true }).click();
+    await page.waitForFunction(() => document.querySelector('.log-path')?.textContent.includes('router.out.log'));
+    assert(await page.locator('.log-preview').innerText());
+    log('Existing service log loads without starting service');
+  }
+} else {
+  assert.equal(cortanaServices.length, 0);
+  log('Optional Cortana controller absence reported without starting external services');
 }
 
 await view('Projects');
@@ -116,8 +122,13 @@ for (let i = 0; i < 30; i++) { try { await fetch(`http://127.0.0.1:${port}`); aw
 await assert.rejects(fetch(`http://127.0.0.1:${port}`));
 log('GUI task interruption stops owned server and releases listening port');
 const serviceAfter = await native('service_inventory');
-for (const s of serviceBefore.services) { const after = serviceAfter.services.find(v => v.id === s.id); assert.deepEqual(after.processIds, s.processIds); assert.equal(after.state, s.state); }
-log('External Cortana and RDC states/process IDs unchanged through acceptance');
+if (cortanaServices.length) {
+  for (const s of serviceBefore.services) { const after = serviceAfter.services.find(v => v.id === s.id); assert.deepEqual(after.processIds, s.processIds); assert.equal(after.state, s.state); }
+  log('External Cortana and RDC states/process IDs unchanged through acceptance');
+} else {
+  assert.equal(serviceAfter.services.filter(s => s.group === 'Cortana' && s.port).length, 0);
+  log('Optional external controller remained absent throughout acceptance');
+}
 
 await view('Files');
 await page.getByLabel('File browser path', { exact: true }).fill(fixture);
