@@ -4,10 +4,10 @@ import React from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
 import { Plus, X, ChevronRight, Columns2, RefreshCw, Zap } from 'lucide-react';
 
-const root = path.resolve(import.meta.dirname, '../../..');
+const root = path.resolve(import.meta.dirname, '../../../..');
 const iconDir = path.join(root, 'src/assets/relay-icons');
-const output = path.join(root, 'design/relay5/original-icons/relay-interaction-icon-comparison.svg');
-const vectorMaster = path.join(root, 'design/relay5/original-icons/relay-interaction-icons-revised-source.svg');
+const output = path.join(root, 'design/archive/relay5-concepts/original-icons/relay-interaction-icon-comparison.svg');
+const vectorMaster = path.join(root, 'design/archive/relay5-concepts/original-icons/relay-interaction-icons-revised-source.svg');
 const rows = [
   { file: 'start-session', label: 'Start terminal session', place: 'New tab · tab strip', lucide: Plus },
   { file: 'close-session', label: 'Close session', place: 'Session / dialog close', lucide: X },

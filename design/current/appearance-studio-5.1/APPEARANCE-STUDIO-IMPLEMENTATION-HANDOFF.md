@@ -4,7 +4,7 @@
 
 This handoff refers to the 23-page editable FigCraft proposal and `REFINEMENT-REVIEW.md`. Keep the accepted Switchline Relay chrome, Lucide utility icons and live-terminal-first layout. The Appearance Studio remains the single authoritative editor; contextual controls are entry points into that same appearance model.
 
-The design is approved and implemented on the `release/5.1.0-appearance-studio` branch. See [`docs/APPEARANCE-STUDIO.md`](../../docs/APPEARANCE-STUDIO.md), [`RELEASE-NOTES-5.1.md`](../../RELEASE-NOTES-5.1.md), and [`TEST-REPORT-5.1.md`](../../TEST-REPORT-5.1.md) for the shipped behavior and validation evidence. The editable 23-page source remains [`Relay-Appearance-Studio-Professional-Review.figcraft`](Relay-Appearance-Studio-Professional-Review.figcraft); earlier directions remain preserved for history.
+The design is approved and implemented on the `release/5.1.0-appearance-studio` branch. See [`docs/APPEARANCE-STUDIO.md`](../../../docs/APPEARANCE-STUDIO.md), [`RELEASE-NOTES-5.1.md`](../../../RELEASE-NOTES-5.1.md), and [`TEST-REPORT-5.1.md`](../../../TEST-REPORT-5.1.md) for the shipped behavior and validation evidence. The editable 23-page source remains [`Relay-Appearance-Studio-Professional-Review.figcraft`](Relay-Appearance-Studio-Professional-Review.figcraft); earlier directions remain preserved for history.
 
 ## Architecture and navigation
 

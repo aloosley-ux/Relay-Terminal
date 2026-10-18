@@ -10,8 +10,8 @@
 - [23-page editable FigCraft document](Relay-Appearance-Studio-Professional-Review.figcraft)
 - Full-resolution concept previews: `professional-previews/` and `refinement-previews/`
 - Editable source vectors: `professional-src/` and `refinement-src/`
-- Shipped product guide: [`docs/APPEARANCE-STUDIO.md`](../../docs/APPEARANCE-STUDIO.md)
-- Release validation: [`TEST-REPORT-5.1.md`](../../TEST-REPORT-5.1.md)
+- Shipped product guide: [`docs/APPEARANCE-STUDIO.md`](../../../docs/APPEARANCE-STUDIO.md)
+- Release validation: [`TEST-REPORT-5.1.md`](../../../TEST-REPORT-5.1.md)
 
 The implemented system keeps the complete Appearance Studio as the authoritative editor, with contextual tab, terminal and live-workspace entry points. It includes distinct application/terminal schemes, global/workspace/session inheritance, precise color and ANSI editing, typography, all background modes and effects, theme lifecycle actions, Follow Windows, wallpaper positioning, tab identity cues and compact-window behavior. Pane-position appearance overrides were not approved and are not part of the release.
 
@@ -20,8 +20,8 @@ The implemented system keeps the complete Appearance Studio as the authoritative
 The final correction pass fixed the live preview banner, Follow Windows representation, mode-specific background controls, compact-window ergonomics and immediate-versus-staged persistence language. It refined the full 16-role ANSI editor, precise color picker, scope/change management, wallpaper/effects editing and split-session quick editor.
 
 - [Final refinement review](REFINEMENT-REVIEW.md)
-- [Full resolution previews](refinement-previews/)
-- [Editable source layers](refinement-src/)
+- [Full resolution previews](refinement-previews)
+- [Editable source layers](refinement-src)
 
 ## Unified professional review milestone
 
@@ -36,10 +36,10 @@ The unified design combines the complete docked Studio with contextual entry poi
 
 The first architecture review and three earlier explorations remain preserved as historical, unapproved proposals. They are not the production baseline.
 
-- [First architecture review](FIRST-REVIEW.md)
-- [Architecture comparison FigCraft](Relay-Appearance-Architecture-Review.figcraft)
-- Original exploration FigCraft: `Relay-Appearance-Exploration.figcraft`
-- Early review previews: `previews/`
+- [First architecture review](../../archive/appearance-early-concepts/FIRST-REVIEW.md)
+- [Architecture comparison FigCraft](../../archive/appearance-early-concepts/Relay-Appearance-Architecture-Review.figcraft)
+- Original exploration FigCraft: [Relay-Appearance-Exploration.figcraft](../../archive/appearance-early-concepts/Relay-Appearance-Exploration.figcraft)
+- [Early review previews](../../archive/appearance-early-concepts/previews/)
 
 ## Product baseline and implemented additions
 
