@@ -14,7 +14,7 @@ Relay 5.1 keeps the approved Switchline identity and brings the unified Appearan
 
 **Existing Windows taskbar pins:** Windows may keep showing a cached Relay 4.0 icon even when the installed 5.0 executable contains the correct Switchline icon. Run [the Windows shortcut-icon repair](scripts/repair-windows-shortcut-icons.ps1) to update the existing taskbar and Start menu shortcut icon paths without restarting Explorer. If Windows still shows the cached old image, unpin the old Relay taskbar entry and pin Relay Terminal again from Start. This is a Windows shortcut/icon-cache issue, not a reason to rebuild or redesign the release.
 
-The editable VectorCraft and FigCraft originals remain under [`design/relay4-identity/`](design/relay4-identity/README.md). The approved and implemented Appearance Studio design remains editable under [`design/appearance-exploration/`](design/appearance-exploration/README.md).
+The editable VectorCraft and FigCraft originals remain under [`design/current/switchline-identity/`](design/current/switchline-identity/README.md). The approved and implemented Appearance Studio design remains editable under [`design/current/appearance-studio-5.1/`](design/current/appearance-studio-5.1/README.md).
 
 ![Relay 5.1 Appearance Studio beside a live Windows PowerShell session](docs/media/appearance-studio-5.1.png)
 

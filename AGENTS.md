@@ -5,11 +5,12 @@ Relay is a fast, local-first Windows terminal built with Tauri/Rust, React and n
 ## Read these before UI, identity, appearance or icon changes
 1. `DESIGN.md` — the established Relay product system: themes, semantic colour, typography, sizing, control states and terminal-first layout.
 2. `.impeccable/design.json` and `.impeccable/relay-surface.md` — machine-readable component tokens and the desktop design brief.
-3. `design/relay4-identity/README.md` and its referenced editable VectorCraft/FigCraft assets — **approved Switchline identity**, integrated into Relay 5.0.
-4. `src/RelayIcons.tsx` — the approved Switchline brand mark. Utility and interface icons use `lucide-react` throughout the app.
-5. Existing `src/style.css`, `src/desktop.css`, `src/studio.css`, `src/appearance.ts`, and actual component code — verify the runtime behaviour against any documentation.
+3. `design/current/switchline-identity/README.md` and its referenced editable VectorCraft/FigCraft assets — **approved Switchline identity**, integrated into Relay 5.0.
+4. `design/current/appearance-studio-5.1/README.md` and the approved editable FigCraft package — **implemented Appearance Studio design**, with source-backed feature and persistence coverage.
+5. `src/RelayIcons.tsx` — the approved Switchline brand mark. Utility and interface icons use `lucide-react` throughout the app.
+6. Existing `src/style.css`, `src/desktop.css`, `src/studio.css`, `src/appearance.ts`, and actual component code — verify the runtime behaviour against any documentation.
 
-Important authority boundary: `design/relay5/README.md`, `design/relay5/DESIGN-SYSTEM.md`, and related Night Gallery screens describe a **review concept, not the approved Relay 5.0 production visual identity**. Other creative-lab/direction studies also remain proposals unless the user explicitly approves them. Do not adopt them as production tokens by accident. Historical documents can reflect older versions; verify version and branch before acting.
+Important authority boundary: `design/archive/relay5-concepts/README.md`, `design/archive/relay5-concepts/DESIGN-SYSTEM.md`, and related Night Gallery screens describe a **review concept, not the approved Relay 5.0 production visual identity**. Other creative-lab/direction studies also remain proposals unless the user explicitly approves them. Do not adopt them as production tokens by accident. Historical documents can reflect older versions; verify version and branch before acting.
 
 ## Preserve Relay's accepted product
 - Keep the approved Switchline mark, Windows identity `com.relay.terminal`, existing themes, appearance settings, user data, native workflows and terminal/session behaviour unless the specific task requires an approved change.

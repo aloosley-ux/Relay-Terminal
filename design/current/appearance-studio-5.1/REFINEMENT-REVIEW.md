@@ -96,4 +96,4 @@ This matrix maps each existing capability to a drawn control or visible interact
 
 **Design recommendations, not product facts:** keeping all color controls docked protects the terminal specimen; an advisory contrast ratio supports legibility without constraining unusual palettes; a Studio-only crop control is a proposal for wallpaper positioning, since current Relay behavior remains centered cover.
 
-**Design-only:** only files in `design/appearance-exploration/` were changed. No application source, settings, build, package or active terminal was touched. This milestone stops for review; no visual direction is approved.
+**Design-only:** only files in `design/current/appearance-studio-5.1/` were changed. No application source, settings, build, package or active terminal was touched. This milestone stops for review; no visual direction is approved.

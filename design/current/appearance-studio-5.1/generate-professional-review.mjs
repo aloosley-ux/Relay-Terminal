@@ -3,7 +3,7 @@ import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const here = dirname(fileURLToPath(import.meta.url));
-const root = resolve(here, '../..');
+const root = resolve(here, '../../..');
 const out = here;
 const H = '#1C2835', R = '#27313D', T = '#141E29', F = '#E0E8EF', M = '#A7B6C4', A = '#93B8DD', B = '#344352', S = '#435C75';
 const appRoles = [['Background','#1C2835'],['Raised surface','#27313D'],['Text','#E0E8EF'],['Muted text','#A7B6C4'],['Accent','#93B8DD'],['Border','#344352']];

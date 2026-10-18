@@ -30,22 +30,22 @@ The topology is part of the interface: solid connectors show project → session
 
 All paths below are relative to the repository root.
 
-- Final comparison board: `design/relay5/creative-directions/previews/relay5-creative-directions-final-review-board.png`
-- Strata comparison: `design/relay5/creative-directions/previews/strata-before-after-comparison.png`
-- Counterpoint comparison: `design/relay5/creative-directions/previews/counterpoint-before-after-comparison.png`
-- Patchbay comparison: `design/relay5/creative-directions/previews/patchbay-before-after-comparison.png`
-- Strata integrated screen: `design/relay5/creative-directions/previews/strata-integrated-1080x720.png`
-- Counterpoint integrated screen: `design/relay5/creative-directions/previews/counterpoint-integrated-1080x720.png`
-- Patchbay integrated screen: `design/relay5/creative-directions/previews/patchbay-integrated-1080x720.png`
-- FigCraft-only draft screens: `design/relay5/creative-directions/previews/strata-before-figcraft-only.png`, `design/relay5/creative-directions/previews/counterpoint-before-figcraft-only.png`, `design/relay5/creative-directions/previews/patchbay-before-figcraft-only.png`
-- Relay 4.0 context capture: `design/relay5/creative-directions/previews/relay4-live-clean-1096x729.png`
+- Final comparison board: `design/archive/relay5-concepts/creative-directions/previews/relay5-creative-directions-final-review-board.png`
+- Strata comparison: `design/archive/relay5-concepts/creative-directions/previews/strata-before-after-comparison.png`
+- Counterpoint comparison: `design/archive/relay5-concepts/creative-directions/previews/counterpoint-before-after-comparison.png`
+- Patchbay comparison: `design/archive/relay5-concepts/creative-directions/previews/patchbay-before-after-comparison.png`
+- Strata integrated screen: `design/archive/relay5-concepts/creative-directions/previews/strata-integrated-1080x720.png`
+- Counterpoint integrated screen: `design/archive/relay5-concepts/creative-directions/previews/counterpoint-integrated-1080x720.png`
+- Patchbay integrated screen: `design/archive/relay5-concepts/creative-directions/previews/patchbay-integrated-1080x720.png`
+- FigCraft-only draft screens: `design/archive/relay5-concepts/creative-directions/previews/strata-before-figcraft-only.png`, `design/archive/relay5-concepts/creative-directions/previews/counterpoint-before-figcraft-only.png`, `design/archive/relay5-concepts/creative-directions/previews/patchbay-before-figcraft-only.png`
+- Relay 4.0 context capture: `design/archive/relay5-concepts/creative-directions/previews/relay4-live-clean-1096x729.png`
 
 ## Editable sources
 
-- Updated FigCraft project: `design/relay5/creative-directions/native/Relay-5-Creative-Directions.figcraft`
-- Strata PhotoCraft source: `design/relay5/creative-directions/native/relay-strata-material.pcraft`
-- Strata flattened surface export used by FigCraft: `design/relay5/creative-directions/assets/strata-grain-surface.png` (1000 × 625; flattened for placement, not the editable source)
-- Counterpoint SVG screen source, also imported as editable FigCraft layers: `design/relay5/creative-directions/assets/counterpoint-integrated-1080x720.svg`
-- Patchbay SVG screen source, also imported as editable FigCraft layers: `design/relay5/creative-directions/assets/patchbay-integrated-1080x720.svg`
-- Preserved VectorCraft source: `design/relay5/creative-directions/native/Relay-5-Creative-Directions.vectorcraft`
-- Preserved EffectCraft source: `design/relay5/creative-directions/native/relay-creative-motions.ecproj` (not used materially in these still screens)
+- Updated FigCraft project: `design/archive/relay5-concepts/creative-directions/native/Relay-5-Creative-Directions.figcraft`
+- Strata PhotoCraft source: `design/archive/relay5-concepts/creative-directions/native/relay-strata-material.pcraft`
+- Strata flattened surface export used by FigCraft: `design/archive/relay5-concepts/creative-directions/assets/strata-grain-surface.png` (1000 × 625; flattened for placement, not the editable source)
+- Counterpoint SVG screen source, also imported as editable FigCraft layers: `design/archive/relay5-concepts/creative-directions/assets/counterpoint-integrated-1080x720.svg`
+- Patchbay SVG screen source, also imported as editable FigCraft layers: `design/archive/relay5-concepts/creative-directions/assets/patchbay-integrated-1080x720.svg`
+- Preserved VectorCraft source: `design/archive/relay5-concepts/creative-directions/native/Relay-5-Creative-Directions.vectorcraft`
+- Preserved EffectCraft source: `design/archive/relay5-concepts/creative-directions/native/relay-creative-motions.ecproj` (not used materially in these still screens)

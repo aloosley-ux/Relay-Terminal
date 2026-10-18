@@ -29,5 +29,5 @@ The icon-resource checks above validate the Windows binaries, **not an already-p
 - The installer uses Tauri's WebView2 download bootstrapper. A machine without the Evergreen WebView2 runtime needs network access during installation.
 - Validation covers this Windows host and the exercised workflows; it is not a clean-machine or hardware compatibility certification.
 - Optional Cortana controller integration was absent on the test host. The app reported that state without starting or changing external services.
-- The experimental `design/relay5/` material remains archived reference material. It was not used to change the shipped interface, themes or functionality.
+- The experimental `design/archive/relay5-concepts/` material remains archived reference material. It was not used to change the shipped interface, themes or functionality.
 

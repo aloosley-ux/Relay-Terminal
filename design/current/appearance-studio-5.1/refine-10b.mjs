@@ -1,5 +1,5 @@
 import { readFileSync, writeFileSync } from 'node:fs';
-const path = 'design/appearance-exploration/generate-professional-review.mjs';
+const path = 'design/current/appearance-studio-5.1/generate-professional-review.mjs';
 let source = readFileSync(path, 'utf8');
 const start = source.indexOf('function splitQuickEditor(){');
 const end = source.indexOf('\nfunction themeExportDialog(){', start);

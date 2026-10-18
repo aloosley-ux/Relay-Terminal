@@ -28,11 +28,11 @@ A measured register with strict rows and columns, explicit source/freshness labe
 
 ## Review files
 
-- [Concept Selection screenshot](./evidence/relay5-four-directions-selection.png)
-- [Relay 4.0 live runtime reference screenshot](./evidence/relay5-four-directions-relay4-runtime.png) (current AI Projects / PowerShell session, captured 17 Oct 2026)
-- [A flagship / workbench / Appearance Studio / compact screenshots](./evidence/relay5-four-directions-A-flagship.png) · [workbench](./evidence/relay5-four-directions-A-workbench.png) · [Appearance](./evidence/relay5-four-directions-A-appearance.png) · [compact](./evidence/relay5-four-directions-A-compact.png)
-- [B flagship / workbench / Appearance Studio / compact screenshots](./evidence/relay5-four-directions-B-flagship.png) · [workbench](./evidence/relay5-four-directions-B-workbench.png) · [Appearance](./evidence/relay5-four-directions-B-appearance.png) · [compact](./evidence/relay5-four-directions-B-compact.png)
-- [C flagship / workbench / Appearance Studio / compact screenshots](./evidence/relay5-four-directions-C-flagship.png) · [workbench](./evidence/relay5-four-directions-C-workbench.png) · [Appearance](./evidence/relay5-four-directions-C-appearance.png) · [compact](./evidence/relay5-four-directions-C-compact.png)
-- [D flagship / workbench / Appearance Studio / compact screenshots](./evidence/relay5-four-directions-D-flagship.png) · [workbench](./evidence/relay5-four-directions-D-workbench.png) · [Appearance](./evidence/relay5-four-directions-D-appearance.png) · [compact](./evidence/relay5-four-directions-D-compact.png)
+- [Concept Selection screenshot](evidence/relay5-four-directions-selection.png)
+- [Relay 4.0 live runtime reference screenshot](evidence/relay5-four-directions-relay4-runtime.png) (current AI Projects / PowerShell session, captured 17 Oct 2026)
+- [A flagship / workbench / Appearance Studio / compact screenshots](evidence/relay5-four-directions-A-flagship.png) · [workbench](evidence/relay5-four-directions-A-workbench.png) · [Appearance](evidence/relay5-four-directions-A-appearance.png) · [compact](evidence/relay5-four-directions-A-compact.png)
+- [B flagship / workbench / Appearance Studio / compact screenshots](evidence/relay5-four-directions-B-flagship.png) · [workbench](evidence/relay5-four-directions-B-workbench.png) · [Appearance](evidence/relay5-four-directions-B-appearance.png) · [compact](evidence/relay5-four-directions-B-compact.png)
+- [C flagship / workbench / Appearance Studio / compact screenshots](evidence/relay5-four-directions-C-flagship.png) · [workbench](evidence/relay5-four-directions-C-workbench.png) · [Appearance](evidence/relay5-four-directions-C-appearance.png) · [compact](evidence/relay5-four-directions-C-compact.png)
+- [D flagship / workbench / Appearance Studio / compact screenshots](evidence/relay5-four-directions-D-flagship.png) · [workbench](evidence/relay5-four-directions-D-workbench.png) · [Appearance](evidence/relay5-four-directions-D-appearance.png) · [compact](evidence/relay5-four-directions-D-compact.png)
 
 The FigCraft designs are editable proposals. Source-page interaction states describe existing safety and recovery behavior; the concepts have not been implemented or usability-tested. No Relay application code was changed and no catalogue components were installed.

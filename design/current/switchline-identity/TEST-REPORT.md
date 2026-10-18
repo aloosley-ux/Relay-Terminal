@@ -24,7 +24,7 @@ The large-output regression wrote 601,303 characters in 3,408 ms and measured a 
 
 ## Visual evidence
 
-Native captures were taken in the Windows app at 1080×720 and 760×500. The 1080×720 live comparison is embedded in the editable FigCraft board and exported as `design/relay4-identity/evidence/before-after-live-1080x720.png`. Compact evidence includes both navigator overlay states. The compact open navigator is an intentional overlay; its collapsed state shows the full terminal prompt and active tab.
+Native captures were taken in the Windows app at 1080×720 and 760×500. The 1080×720 live comparison is embedded in the editable FigCraft board and exported as `design/current/switchline-identity/evidence/before-after-live-1080x720.png`. Compact evidence includes both navigator overlay states. The compact open navigator is an intentional overlay; its collapsed state shows the full terminal prompt and active tab.
 
 ## Limits and outstanding items
 
