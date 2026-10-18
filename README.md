@@ -6,6 +6,8 @@
 
 Relay Terminal 5.1.0 adds the approved Appearance Studio redesign. Windows release artifacts, release notes, validation report, and SHA-256 manifest are placed in [`Build/Release-5.1.0/`](Build/Release-5.1.0/) when packaged.
 
+Download the [standalone Windows executable](https://github.com/aloosley-ux/Relay-Terminal/releases/download/v5.1.0/Relay-Terminal_5.1.0_x64.exe) or [NSIS installer](https://github.com/aloosley-ux/Relay-Terminal/releases/download/v5.1.0/Relay-Terminal_5.1.0_x64-setup.exe) from the [5.1.0 release](https://github.com/aloosley-ux/Relay-Terminal/releases/tag/v5.1.0).
+
 [5.1 release notes](RELEASE-NOTES-5.1.md) · [5.1 validation](TEST-REPORT-5.1.md) · [5.0 release notes](RELEASE-NOTES-5.0.md) · [Appearance Studio guide](docs/APPEARANCE-STUDIO.md) · [4.0 release notes](RELEASE-NOTES-4.0.md)
 
 Relay 5.1 keeps the approved Switchline identity and brings the unified Appearance Studio into the original `com.relay.terminal` product.

@@ -22,6 +22,6 @@ Validation used the packaged Windows x64 build, Microsoft WebView2, and fresh te
 - The executable and installer are unsigned. Windows may show its normal publisher warning.
 - The NSIS bundle uses the WebView2 Evergreen bootstrapper; a clean machine without WebView2 requires network access during installation.
 - Validation covers the exercised workflows on this Windows host. It is not clean-machine, cross-version or hardware compatibility certification.
-- Release artifacts and their checksums are local build outputs until the GitHub release workflow completes.
+- The public [GitHub 5.1.0 release](https://github.com/aloosley-ux/Relay-Terminal/releases/tag/v5.1.0) is published with the standalone executable, NSIS installer, release metadata and SHA-256 manifest.
 - Vite reports the main JavaScript chunk above 500 kB (713 kB minified); production build succeeds. This is a performance follow-up, not a failed validation.
 - The composition event regression check is synthetic; physical IME hardware was not independently verified.
