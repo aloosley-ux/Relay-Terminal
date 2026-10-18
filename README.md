@@ -2,13 +2,13 @@
 
 **A real PowerShell terminal, with the bits I kept wishing were in the same window.**
 
-**Windows · Tauri 2 · Rust/ConPTY · React/TypeScript · xterm.js · v5.1.0**
+**Windows · Tauri 2 · Rust/ConPTY · React/TypeScript · xterm.js · v5.1.1**
 
-Relay Terminal 5.1.0 adds the approved Appearance Studio redesign. Windows release artifacts, release notes, validation report, and SHA-256 manifest are placed in [`Build/Release-5.1.0/`](Build/Release-5.1.0/) when packaged.
+Relay Terminal 5.1.1 refines the approved Appearance Studio scope handoff: workspace edits keep the workspace palette when a session override is active. Windows release artifacts, release notes, validation report, and SHA-256 manifest are placed in [`Build/Release-5.1.1/`](Build/Release-5.1.1/) when packaged.
 
-Download the [standalone Windows executable](https://github.com/aloosley-ux/Relay-Terminal/releases/download/v5.1.0/Relay-Terminal_5.1.0_x64.exe) or [NSIS installer](https://github.com/aloosley-ux/Relay-Terminal/releases/download/v5.1.0/Relay-Terminal_5.1.0_x64-setup.exe) from the [5.1.0 release](https://github.com/aloosley-ux/Relay-Terminal/releases/tag/v5.1.0).
+Download the [standalone Windows executable](https://github.com/aloosley-ux/Relay-Terminal/releases/download/v5.1.1/Relay-Terminal_5.1.1_x64.exe) or [NSIS installer](https://github.com/aloosley-ux/Relay-Terminal/releases/download/v5.1.1/Relay-Terminal_5.1.1_x64-setup.exe) from the [5.1.1 release](https://github.com/aloosley-ux/Relay-Terminal/releases/tag/v5.1.1). The [5.1.0 release](https://github.com/aloosley-ux/Relay-Terminal/releases/tag/v5.1.0) remains available.
 
-[5.1 release notes](RELEASE-NOTES-5.1.md) · [5.1 validation](TEST-REPORT-5.1.md) · [5.0 release notes](RELEASE-NOTES-5.0.md) · [Appearance Studio guide](docs/APPEARANCE-STUDIO.md) · [4.0 release notes](RELEASE-NOTES-4.0.md)
+[5.1.1 release notes](RELEASE-NOTES-5.1.1.md) · [5.1.1 validation](TEST-REPORT-5.1.1.md) · [5.1.0 release notes](RELEASE-NOTES-5.1.md) · [Appearance Studio guide](docs/APPEARANCE-STUDIO.md) · [4.0 release notes](RELEASE-NOTES-4.0.md)
 
 Relay 5.1 keeps the approved Switchline identity and brings the unified Appearance Studio into the original `com.relay.terminal` product.
 
@@ -45,11 +45,11 @@ Appearance Studio supports custom theme save/edit/rename/duplicate/delete with u
 - **No mystery automation.** Saved actions do not execute automatically; multiline paste is reviewed before it can run; live sessions ask before closing.
 - **Useful to *my* setup, not just a mock-up.** Relay can read an existing Cortana controller and observe Remote Desktop Commander processes and logs. These are optional, machine-specific integrations — Relay doesn't install or own either system.
 - **Quiet when idle.** Discovery runs on navigation or explicit refresh, rather than a permanent repository scanner or daemon.
-- **Reproducible evidence.** The 5.1 release was exercised in the packaged Windows/WebView2 application, not just in browser previews or screenshots.
+- **Reproducible evidence.** The 5.1.1 release was exercised in the packaged Windows/WebView2 application, not just in browser previews or screenshots.
 
 ## Where it stands
 
-**Relay is Windows-focused.** These are its current capabilities and boundaries. The v2.0 performance measurements below are historical samples; the [5.1 test report](TEST-REPORT-5.1.md) records the packaged-app checks and remaining verification limits.
+**Relay is Windows-focused.** These are its current capabilities and boundaries. The v2.0 performance measurements below are historical samples; the [5.1.1 test report](TEST-REPORT-5.1.1.md) records the packaged-app checks and remaining verification limits.
 
 | Works today | Still limited / not promised |
 | --- | --- |
@@ -57,12 +57,12 @@ Appearance Studio supports custom theme save/edit/rename/duplicate/delete with u
 | Named tasks with output, elapsed time and interruption | Task discovery currently favours Node and Cargo; other projects can use manually entered commands. |
 | Local files, projects, settings and actions | The file viewer is bounded plain text, not a full editor or binary viewer. |
 | Cortana service actions through an existing local controller | Integrations depend on that controller being installed/configured; RDC lifecycle management is read-only. |
-| Windows release EXE and NSIS installer | See the 5.1 test report for packaged GUI, icon-resource, and isolated installer checks. The release is unsigned; clean-machine validation remains a limitation. |
+| Windows release EXE and NSIS installer | See the 5.1.1 test report for packaged GUI, icon-resource, and isolated installer checks. The release is unsigned; clean-machine validation remains a limitation. |
 | Windows PowerShell tested end to end | PowerShell 7.6.7 and Windows PowerShell have native test coverage; Vim, cmd and Git Bash child workflows are exercised. Other applications are not exhaustively tested. |
 
 A custom PowerShell prompt can also disable Relay's current-directory and outcome reporting; the terminal itself still functions.
 
-For details, read [the 5.1 test report](TEST-REPORT-5.1.md) and [release notes](RELEASE-NOTES-5.1.md).
+For details, read [the 5.1.1 test report](TEST-REPORT-5.1.1.md) and [release notes](RELEASE-NOTES-5.1.1.md).
 
 ## How it was made
 
@@ -106,10 +106,10 @@ Those are **measured samples, not minimum-spec guarantees**. The full Windows We
 
 This repository tracks the **source**, not personal test data or built executables.
 
-On the development machine, the 5.1.0 release files live under `Build/Release-5.1.0/`:
+On the development machine, the 5.1.1 release files live under `Build/Release-5.1.1/`:
 
-- `Relay-Terminal_5.1.0_x64.exe` — standalone Windows executable.
-- `Relay-Terminal_5.1.0_x64-setup.exe` — NSIS installer.
+- `Relay-Terminal_5.1.1_x64.exe` — standalone Windows executable.
+- `Relay-Terminal_5.1.1_x64-setup.exe` — NSIS installer.
 
 The folder also contains release notes, the validation report and `SHA256SUMS.txt`. Generated executables are excluded from Git history.
 
