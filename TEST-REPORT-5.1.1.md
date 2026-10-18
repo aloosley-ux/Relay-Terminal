@@ -24,3 +24,7 @@ Validation used the packaged Windows x64 build, Microsoft WebView2, and fresh pr
 - Validation covers the exercised workflows on this Windows host, not clean-machine or hardware compatibility certification.
 - Vite warns that the main JavaScript chunk is 713 kB minified; the production build succeeds.
 - The composition event regression is synthetic; physical IME hardware was not independently verified.
+
+## Published release
+
+Relay Terminal 5.1.1 is published at [GitHub Releases](https://github.com/aloosley-ux/Relay-Terminal/releases/tag/v5.1.1). The release includes the Windows x64 standalone executable, NSIS installer, `SHA256SUMS.txt`, and `RELEASE-METADATA.json`.
