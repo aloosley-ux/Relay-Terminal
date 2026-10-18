@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="512" height="512" viewBox="0 0 512 512">
+  <title>Relay Application Icon · Switchline</title>
+  <g id="Layer_1" data-name="Layer 1">
+    <path id="Windows_icon_background" data-name="Windows icon background" d="M64 0 L448 0 C483.346 0 512 28.654 512 64 L512 448 C512 483.346 483.346 512 448 512 L64 512 C28.654 512 0 483.346 0 448 L0 64 C0 28.654 28.654 0 64 0 Z" fill="#182d34"/>
+    <path id="Switchline___app_icon" data-name="Switchline · app icon" d="M112 160 L233 160 C284 160 284 232 233 232 L214 232 C163 232 163 304 214 304 L400 304" fill="none" stroke="#f4f7f4" stroke-width="34" stroke-linecap="round" stroke-linejoin="round"/>
+    <path id="Relay_point___app_icon" data-name="Relay point · app icon" d="M213 232 C213 220.954 221.954 212 233 212 C244.046 212 253 220.954 253 232 C253 243.046 244.046 252 233 252 C221.954 252 213 243.046 213 232 Z" fill="#82cec2"/>
+  </g>
+</svg>

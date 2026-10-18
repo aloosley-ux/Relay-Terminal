@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { invoke } from '@tauri-apps/api/core';
-import { ArrowLeft, ArrowUp, Check, ChevronRight, CircleStop, Clock3, Code2, Copy, ExternalLink, File, FileCode2, Folder, FolderOpen, GitBranch, ListFilter, Play, Plus, RefreshCw, Search, Server, Star, Terminal, X } from 'lucide-react';
+import { ArrowLeft, ArrowUp, Check, CircleStop, Clock3, Code2, Copy, ExternalLink, File, FileCode2, Folder, FolderOpen, GitBranch, ListFilter, Play, Plus, Search, Server, Star, Terminal, RefreshCw, X, ChevronRight } from 'lucide-react';
 import { basename, type Bootstrap, type ProjectDetails, type ProcessSnapshot, type Session, type Settings, type TaskRun, type View, type Workspace } from './types';
 import { terminalText } from './terminals';
 

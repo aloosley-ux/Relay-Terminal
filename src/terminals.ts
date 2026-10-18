@@ -18,7 +18,7 @@ export async function createTerminal(session: Session, settings: Settings, chang
   host.className = 'terminal-host';
   host.dataset.session = session.key;
   // xterm 6 locks transparency at open. Never reopen/dispose to change appearance.
-  const terminal = new Terminal({ allowTransparency: true, theme: themes[effectiveTheme(settings.theme)], fontFamily: '"Cascadia Mono", "Cascadia Code", Consolas, "Courier New", monospace', fontSize: settings.fontSize, lineHeight: 1.2, letterSpacing: 0, scrollback: 10000, cursorStyle: 'bar', cursorBlink: true, allowProposedApi: false, convertEol: false, minimumContrastRatio: 4.5, rightClickSelectsWord: false, screenReaderMode: settings.screenReaderMode ?? false });
+  const terminal = new Terminal({ allowTransparency: true, theme: themes[effectiveTheme(settings.theme)], fontFamily: '"Cascadia Mono", "Cascadia Code", Consolas, "Courier New", monospace', fontSize: settings.fontSize, lineHeight: 1.2, letterSpacing: 0, scrollback: 10000, cursorStyle: 'bar', cursorBlink: true, allowProposedApi: false, convertEol: false, minimumContrastRatio: 1, rightClickSelectsWord: false, screenReaderMode: settings.screenReaderMode ?? false });
   const commands = new CommandOutput(terminal);
   const fit = new FitAddon();
   const search = new SearchAddon();
@@ -125,6 +125,7 @@ export function applyTerminalAppearance(record: TerminalRecord, theme: Appearanc
   host.style.setProperty('--pane-blur',`${b.blur}px`);
   host.style.setProperty('--pane-intensity',String(b.intensity*(1-b.opacity)));
   host.style.setProperty('--pane-speed',`${b.speed}s`);
+  host.style.setProperty('--pane-position',`${b.positionX ?? 50}% ${b.positionY ?? 50}%`);
   host.style.setProperty('--pane-padding',`${theme.padding}px`);
   if(host.isConnected&&host.offsetWidth>20&&host.offsetHeight>20&&host.style.display!=='none') try{record.fit.fit();}catch{}
 }

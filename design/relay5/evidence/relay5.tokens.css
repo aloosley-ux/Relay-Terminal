@@ -1,0 +1,68 @@
+/* Relay 5 · Semantic · Night */
+:root {
+  --color-window: #111719;
+  --color-panel: #171F22;
+  --color-raised: #202A2D;
+  --color-terminal: #0B1013;
+  --color-terminalchrome: #11181B;
+  --color-border: #2C383A;
+  --color-borderstrong: #425254;
+  --color-text: #E8F0ED;
+  --color-muted: #A4B4AF;
+  --color-faint: #788984;
+  --color-accent: #79D4C2;
+  --color-accenttext: #10201C;
+  --color-focus: #8CE4D2;
+  --color-selection: #21443D;
+  --color-success: #80D4A2;
+  --color-warning: #E2B76B;
+  --color-danger: #F08D8D;
+  --color-info: #91BFE2;
+  --color-output: #C9D4CF;
+  --color-disabled: #687773;
+  --space-1: 4;
+  --space-2: 8;
+  --space-3: 12;
+  --space-4: 16;
+  --space-6: 24;
+  --radius-control: 5;
+  --radius-panel: 7;
+  --type-interface: 13;
+  --type-small: 11;
+  --type-title: 19;
+  --type-terminal: 14;
+}
+/* Relay 5 · Semantic · Day */
+[data-relay-5-semantic="Day"] {
+  --color-window: #F2F5F3;
+  --color-panel: #FFFFFF;
+  --color-raised: #E8EEEC;
+  --color-terminal: #FBFCFB;
+  --color-terminalchrome: #F4F7F6;
+  --color-border: #C8D3D0;
+  --color-borderstrong: #AAB9B5;
+  --color-text: #15211E;
+  --color-muted: #52615C;
+  --color-faint: #56645F;
+  --color-accent: #087868;
+  --color-accenttext: #FFFFFF;
+  --color-focus: #006B5C;
+  --color-selection: #D2EEE7;
+  --color-success: #236C41;
+  --color-warning: #835000;
+  --color-danger: #A12F35;
+  --color-info: #205D83;
+  --color-output: #374440;
+  --color-disabled: #8A9792;
+  --space-1: 4;
+  --space-2: 8;
+  --space-3: 12;
+  --space-4: 16;
+  --space-6: 24;
+  --radius-control: 5;
+  --radius-panel: 7;
+  --type-interface: 13;
+  --type-small: 11;
+  --type-title: 19;
+  --type-terminal: 14;
+}

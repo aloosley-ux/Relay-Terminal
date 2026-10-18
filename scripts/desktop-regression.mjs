@@ -9,6 +9,9 @@ const browser = await chromium.connectOverCDP(`http://127.0.0.1:${process.argv[2
 const page = browser.contexts()[0].pages().find(p => p.url().includes('tauri.localhost'));
 page.setDefaultTimeout(15000);
 const failures = [];
+const projectRoot = process.cwd();
+const projectParent = path.dirname(projectRoot);
+const projectName = path.basename(projectRoot);
 page.on('pageerror',e=>failures.push(e.message));
 const results = [];
 const resume=process.argv.includes('--resume');
@@ -20,7 +23,8 @@ if(resume) {
 const log = (name, detail='') => { results.push({name,pass:true,detail}); fsSync.writeFileSync('artifacts/desktop-regression-results.json',JSON.stringify({results,pageErrors:failures},null,2)); console.log(`PASS ${name}${detail?' — '+detail:''}`); };
 const ready = async () => { await page.locator('.statusbar[data-status="ready"]').waitFor(); };
 const output = async () => {
-  if(await page.getByRole('button',{name:'Dismiss notification',exact:true}).count()) await page.getByRole('button',{name:'Dismiss notification',exact:true}).click();
+  const dismiss = page.getByRole('button',{name:'Dismiss notification',exact:true});
+  try { await dismiss.click({timeout:300}); } catch (error) { if (error.name !== 'TimeoutError') throw error; }
   await page.getByRole('button',{name:'Copy all output',exact:true}).click();
   await page.getByText('Copied to clipboard',{exact:true}).waitFor();
   for(let i=0;i<6;i++) { try { return await page.evaluate(()=>window.__TAURI_INTERNALS__.invoke('clipboard_read')); } catch(e) { if(i===5) throw e; await page.waitForTimeout(80); } }
@@ -137,17 +141,17 @@ await page.waitForFunction(()=>document.querySelectorAll('[role="tab"]').length=
 log('Three simultaneous tabs; close cancellation and deliberate process termination');
 
 await page.keyboard.press('Control+Shift+l');
-await page.getByLabel('Folder path',{exact:true}).fill('C:\\AI');
+await page.getByLabel('Folder path',{exact:true}).fill(projectParent);
 await page.getByRole('button',{name:'Go to folder path',exact:true}).click();
-await page.getByLabel('Search folders',{exact:true}).fill('Nostalgia');
-await page.getByRole('button',{name:'Nostalgia C:\\AI\\Nostalgia',exact:true}).click();
+await page.getByLabel('Search folders',{exact:true}).fill(projectName);
+await page.getByRole('button',{name:`${projectName} ${projectRoot}`,exact:true}).click();
 await page.getByRole('button',{name:'Favourite selected folder',exact:true}).click();
 await page.getByRole('button',{name:'Open new tab',exact:true}).click();
 await ready();
-assert.equal(await page.locator('.breadcrumbs').getAttribute('title'),'C:\\AI\\Nostalgia');
+assert.equal(await page.locator('.breadcrumbs').getAttribute('title'),projectRoot);
 log('Searchable folder browser, discovered projects, favourite folder, new tab cwd');
 
-await run('git --version; git -C C:\\AI\\Nostalgia rev-parse --is-inside-work-tree; git -C C:\\AI\\Nostalgia status --short','git version');
+await run(`git --version; git -C "${projectRoot}" rev-parse --is-inside-work-tree; git -C "${projectRoot}" status --short`,'git version');
 assert.match(await output(),/git version/);
 log('Real Git commands (read-only existing repository)');
 
@@ -248,7 +252,7 @@ const settingsPath=await page.evaluate(async()=> (await window.__TAURI_INTERNALS
 const saved=JSON.parse(await fs.readFile(settingsPath,'utf8'));
 assert.equal(saved.theme,'dark');
 assert(saved.actions.some(a=>a.name==='Fixture check'&&a.description==='Edited and persisted'&&a.favorite));
-assert(saved.favorites.includes('C:\\AI\\Nostalgia'));
+assert(saved.favorites.includes(projectRoot));
 assert(saved.workspaces.some(w=>w.name==='Relay test workspace'));
 log('Persisted settings, actions, favourites, workspaces and tab directories');
 assert.deepEqual(failures,[]);

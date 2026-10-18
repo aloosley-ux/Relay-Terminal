@@ -13,6 +13,7 @@ pub fn validate_theme(t:&Value)->Result<(),String>{
     let b=&t["background"];
     if !one(&b["type"],&["solid","gradient","wallpaper","ambient"])||!color(&b["from"])||!color(&b["to"])||!b["animated"].is_boolean() {return Err("Invalid background".into());}
     for (k,min,max) in [("opacity",0.35,1.),("intensity",0.,1.),("angle",0.,360.),("blur",0.,40.),("speed",10.,120.)] {if !range(&b[k],min,max){return Err(format!("Invalid background {k}"));}}
+    for k in ["positionX","positionY"] {if !b[k].is_null()&&!range(&b[k],0.,100.){return Err(format!("Invalid wallpaper {k}"));}}
     let image=b["image"].as_str().ok_or("Invalid wallpaper")?;
     if image.len()>5_600_000 {return Err("Wallpaper exceeds size limit".into());}
     if !image.is_empty()&&image!="/wallpapers/tideland.svg" {
@@ -21,7 +22,7 @@ pub fn validate_theme(t:&Value)->Result<(),String>{
     }
     Ok(())
 }
-fn validate_choice(c:&Value)->Result<(),String> {if !text(&c["appTheme"],80)||!text(&c["terminalTheme"],80){return Err("Invalid theme reference".into());}if let Some(t)=c.get("custom"){validate_theme(t)?;}Ok(())}
+fn validate_choice(c:&Value)->Result<(),String> {if !text(&c["appTheme"],80)||!text(&c["terminalTheme"],80){return Err("Invalid theme reference".into());}if let Some(t)=c.get("custom"){validate_theme(t)?;}if let Some(t)=c.get("appCustom"){validate_theme(t)?;}if let Some(identity)=c.get("tabIdentity"){if !color(&identity["color"])||!one(&identity["icon"],&["terminal","folder","code","server","star"]){return Err("Invalid tab identity".into());}}Ok(())}
 pub fn validate_store(v:&Value)->Result<(),String> {
     if v["version"]!=1||v.to_string().len()>24_000_000{return Err("Unsupported or oversized appearance settings".into());}
     validate_choice(&v["global"])?;
@@ -39,7 +40,13 @@ pub async fn export_theme_file(text:String)->Result<Option<String>,String> {
 }
 #[cfg(test)] mod tests {
     use super::*;
+    fn valid_theme()->Value {
+        let mut terminal=serde_json::Map::new();
+        for key in COLORS {terminal.insert(key.into(),serde_json::json!("#334455"));}
+        serde_json::json!({"id":"custom-test","name":"Test theme","mode":"dark","app":{"background":"#334455","raised":"#334455","text":"#334455","muted":"#334455","accent":"#334455","border":"#334455"},"terminal":terminal,"fontFamily":"Consolas, monospace","fontSize":14,"lineHeight":1.2,"letterSpacing":0,"padding":20,"cursorStyle":"bar","cursorBlink":false,"background":{"type":"wallpaper","image":"","from":"#334455","to":"#334455","angle":135,"opacity":0.8,"intensity":0.5,"blur":4,"animated":false,"speed":30,"positionX":17,"positionY":83}})
+    }
     #[test] fn rejects_untrusted_backgrounds(){assert!(validate_theme(&serde_json::json!({"background":{"image":"https://bad.invalid/a.svg"}})).is_err());}
     #[test] fn rejects_bad_versions_and_sizes(){assert!(validate_store(&serde_json::json!({"version":2})).is_err());assert!(!range(&serde_json::json!(200),0.,40.));assert!(!color(&serde_json::json!("red;url(x)")));}
     #[test] fn migrates_old_settings(){let s:crate::storage::Settings=serde_json::from_str(r#"{"theme":"light","fontSize":16,"panelOpen":true}"#).unwrap();assert!(s.appearance.is_none());assert_eq!(s.font_size,16);assert_eq!(s.navigator_width,236);assert!(s.panel_open);}
+    #[test] fn accepts_wallpaper_position_and_tab_identity_but_rejects_invalid_values(){let theme=valid_theme();assert!(validate_theme(&theme).is_ok());let mut invalid=theme.clone();invalid["background"]["positionX"]=serde_json::json!(101);assert!(validate_theme(&invalid).is_err());let store=serde_json::json!({"version":1,"global":{"appTheme":"custom-app","terminalTheme":"harbor","appCustom":theme,"tabIdentity":{"color":"#AABBCC","icon":"folder"}},"workspaces":{},"sessions":{},"themes":[]});assert!(validate_store(&store).is_ok());let mut invalid_store=store.clone();invalid_store["global"]["tabIdentity"]["icon"]=serde_json::json!("unknown");assert!(validate_store(&invalid_store).is_err());}
 }

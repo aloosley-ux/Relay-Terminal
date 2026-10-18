@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1000" height="620" viewBox="0 0 1000 620">
+  <title>relay-creative-directions</title>
+  <g id="Layer_1" data-name="Layer 1">
+    <path id="Patchbay_field" data-name="Patchbay field" d="M0 0 L1000 0 L1000 620 L0 620 Z" fill="#e7ece9"/>
+    <text transform="matrix(1 0 0 1 50 64)" x="0" y="0" xml:space="preserve" font-family="&apos;Segoe UI&apos;" font-size="22" fill="#172021"><tspan x="0" y="0">PATCHBAY  /  OWNERSHIP IN THE OPEN</tspan></text>
+    <text transform="matrix(1 0 0 1 50 94)" x="0" y="0" xml:space="preserve" font-family="&apos;Segoe UI&apos;" font-size="12" fill="#52615f"><tspan x="0" y="0">Nodes are available Relay objects; connections explain observed source and control.</tspan></text>
+    <path id="Project_to_task_to_process_to_port" data-name="Project to task to process to port" d="M160 308 C260 308 270 206 380 206 L480 206 C580 206 560 308 680 308 L860 308" fill="none" stroke="#84938e" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+    <path id="Session_attachment" data-name="Session attachment" d="M160 308 C260 308 280 440 390 440 L510 440 C630 440 700 380 860 308" fill="none" stroke="#c3a7d8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <path id="Local_observation" data-name="Local observation" d="M580 206 C660 150 770 150 860 178" fill="none" stroke="#e5734f" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <text transform="matrix(1 0 0 1 104 300)" x="0" y="0" xml:space="preserve" font-family="&apos;Cascadia Mono&apos;" font-size="10" fill="#f1f4f2"><tspan x="0" y="0">PROJECT</tspan></text>
+    <text transform="matrix(1 0 0 1 340 196)" x="0" y="0" xml:space="preserve" font-family="&apos;Cascadia Mono&apos;" font-size="10" fill="#172021"><tspan x="0" y="0">TASK</tspan></text>
+    <text transform="matrix(1 0 0 1 545 196)" x="0" y="0" xml:space="preserve" font-family="&apos;Cascadia Mono&apos;" font-size="10" fill="#172021"><tspan x="0" y="0">OWNED</tspan></text>
+    <text transform="matrix(1 0 0 1 828 300)" x="0" y="0" xml:space="preserve" font-family="&apos;Cascadia Mono&apos;" font-size="10" fill="#172021"><tspan x="0" y="0">PORT</tspan></text>
+    <text transform="matrix(1 0 0 1 350 434)" x="0" y="0" xml:space="preserve" font-family="&apos;Cascadia Mono&apos;" font-size="10" fill="#172021"><tspan x="0" y="0">SHELL</tspan></text>
+    <text transform="matrix(1 0 0 1 640 374)" x="0" y="0" xml:space="preserve" font-family="&apos;Cascadia Mono&apos;" font-size="9" fill="#53615f"><tspan x="0" y="0">OBSERVED</tspan></text>
+    <text transform="matrix(1 0 0 1 90 514)" x="0" y="0" xml:space="preserve" font-family="&apos;Cascadia Mono&apos;" font-size="10" fill="#53615f"><tspan x="0" y="0">SOLID LINK  Relay-owned     ·     DOTTED LINK  observed     ·     EXTERNAL  inspect only</tspan></text>
+    <path id="Project_socket_housing" data-name="Project socket housing" d="M86 308 C86 267.131 119.131 234 160 234 C200.869 234 234 267.131 234 308 C234 348.869 200.869 382 160 382 C119.131 382 86 348.869 86 308 Z" fill="#172021" stroke="#c4d84b" stroke-width="2" stroke-miterlimit="10"/>
+    <path id="Project_connection" data-name="Project connection" d="M152 308 C152 303.582 155.582 300 160 300 C164.418 300 168 303.582 168 308 C168 312.418 164.418 316 160 316 C155.582 316 152 312.418 152 308 Z" fill="#c4d84b"/>
+    <path id="Task_socket_housing" data-name="Task socket housing" d="M324 206 C324 175.072 349.072 150 380 150 C410.928 150 436 175.072 436 206 C436 236.928 410.928 262 380 262 C349.072 262 324 236.928 324 206 Z" fill="#d9ebcb" stroke="#007c78" stroke-width="2" stroke-miterlimit="10"/>
+    <path id="Task_connection" data-name="Task connection" d="M372 206 C372 201.582 375.582 198 380 198 C384.418 198 388 201.582 388 206 C388 210.418 384.418 214 380 214 C375.582 214 372 210.418 372 206 Z" fill="#007c78"/>
+    <path id="Owned_process_socket_housing" data-name="Owned process socket housing" d="M524 206 C524 175.072 549.072 150 580 150 C610.928 150 636 175.072 636 206 C636 236.928 610.928 262 580 262 C549.072 262 524 236.928 524 206 Z" fill="#d9ebcb" stroke="#007c78" stroke-width="2" stroke-miterlimit="10"/>
+    <path id="Owned_process_connection" data-name="Owned process connection" d="M572 206 C572 201.582 575.582 198 580 198 C584.418 198 588 201.582 588 206 C588 210.418 584.418 214 580 214 C575.582 214 572 210.418 572 206 Z" fill="#007c78"/>
+    <path id="Port_socket_housing" data-name="Port socket housing" d="M804 308 C804 277.072 829.072 252 860 252 C890.928 252 916 277.072 916 308 C916 338.928 890.928 364 860 364 C829.072 364 804 338.928 804 308 Z" fill="#f5e2d8" stroke="#e5734f" stroke-width="2" stroke-miterlimit="10"/>
+    <path id="Port_connection" data-name="Port connection" d="M852 308 C852 303.582 855.582 300 860 300 C864.418 300 868 303.582 868 308 C868 312.418 864.418 316 860 316 C855.582 316 852 312.418 852 308 Z" fill="#e5734f"/>
+    <path id="Session_socket_housing" data-name="Session socket housing" d="M340 440 C340 412.386 362.386 390 390 390 C417.614 390 440 412.386 440 440 C440 467.614 417.614 490 390 490 C362.386 490 340 467.614 340 440 Z" fill="#e2dff1" stroke="#6552a3" stroke-width="2" stroke-miterlimit="10"/>
+    <path id="Session_connection" data-name="Session connection" d="M382 440 C382 435.582 385.582 432 390 432 C394.418 432 398 435.582 398 440 C398 444.418 394.418 448 390 448 C385.582 448 382 444.418 382 440 Z" fill="#6552a3"/>
+    <path id="Observed_process_socket_housing" data-name="Observed process socket housing" d="M639 380 C639 354.595 659.595 334 685 334 C710.405 334 731 354.595 731 380 C731 405.405 710.405 426 685 426 C659.595 426 639 405.405 639 380 Z" fill="#f1f4f2" stroke="#74817f" stroke-width="2" stroke-miterlimit="10"/>
+    <path id="Observed_process_connection" data-name="Observed process connection" d="M677 380 C677 375.582 680.582 372 685 372 C689.418 372 693 375.582 693 380 C693 384.418 689.418 388 685 388 C680.582 388 677 384.418 677 380 Z" fill="#74817f"/>
+    <text transform="matrix(1 0 0 1 117 300)" x="0" y="0" xml:space="preserve" font-family="&apos;Cascadia Mono&apos;" font-size="10" fill="#f1f4f2"><tspan x="0" y="0">PROJECT</tspan></text>
+    <text transform="matrix(1 0 0 1 356 198)" x="0" y="0" xml:space="preserve" font-family="&apos;Cascadia Mono&apos;" font-size="10" fill="#172021"><tspan x="0" y="0">TASK</tspan></text>
+    <text transform="matrix(1 0 0 1 548 198)" x="0" y="0" xml:space="preserve" font-family="&apos;Cascadia Mono&apos;" font-size="10" fill="#172021"><tspan x="0" y="0">OWNED</tspan></text>
+    <text transform="matrix(1 0 0 1 837 300)" x="0" y="0" xml:space="preserve" font-family="&apos;Cascadia Mono&apos;" font-size="10" fill="#172021"><tspan x="0" y="0">PORT</tspan></text>
+    <text transform="matrix(1 0 0 1 358 432)" x="0" y="0" xml:space="preserve" font-family="&apos;Cascadia Mono&apos;" font-size="10" fill="#172021"><tspan x="0" y="0">SHELL</tspan></text>
+    <text transform="matrix(1 0 0 1 644 372)" x="0" y="0" xml:space="preserve" font-family="&apos;Cascadia Mono&apos;" font-size="8" fill="#53615f"><tspan x="0" y="0">READ ONLY</tspan></text>
+  </g>
+</svg>

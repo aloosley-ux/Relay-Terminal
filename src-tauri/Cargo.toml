@@ -1,9 +1,13 @@
 [package]
 name = "relay-terminal"
-version = "4.0.0"
+version = "5.1.0"
 description = "An intuitive PowerShell terminal for Windows"
 authors = ["Relay"]
 edition = "2021"
+
+[package.metadata.tauri-winres]
+OriginalFilename = "Relay Terminal.exe"
+InternalName = "Relay Terminal"
 
 [build-dependencies]
 tauri-build = { version = "2", features = [] }
