@@ -1,6 +1,6 @@
 $ErrorActionPreference = 'Stop'
 $project = Split-Path $PSScriptRoot -Parent
-$root = [IO.Path]::GetFullPath((Join-Path $project 'artifacts\appearance-studio-5.1-installer-final'))
+$root = [IO.Path]::GetFullPath((Join-Path $project 'artifacts\appearance-studio-5.1.1-installer-release'))
 $install = Join-Path $root 'installed'
 $nsis = Join-Path $project 'src-tauri\target\release\nsis\x64'
 $template = Join-Path $nsis 'installer.nsi'

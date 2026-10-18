@@ -1,5 +1,11 @@
 # Changelog
 
+## 5.1.1 — Appearance scope handoff
+
+- Resolve the Studio's initial palette from the chosen target scope. When a session overrides its workspace, opening the workspace editor now loads the workspace palette rather than the session palette.
+- Preserve session precedence, show that a session override masks workspace changes, and keep **Use inherited** returning the session to the workspace palette.
+- Add packaged native regression coverage for workspace quick editing, full Studio handoff, override precedence and inheritance restoration.
+
 ## 5.1.0 — Appearance Studio
 
 - Rebuilt the Appearance Studio as a complete, docked editing environment with separate Themes, Type, Colour and Backdrop workflows.

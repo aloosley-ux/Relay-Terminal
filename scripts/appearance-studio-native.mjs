@@ -71,11 +71,22 @@ try{
  await page.locator('input[type=file]').first().setInputFiles(`${artifact}/invalid-theme.json`);await page.getByRole('alert').filter({hasText:'Unsupported theme format or version'}).waitFor();
  await page.screenshot({path:`${artifact}/studio-theme-import-error.png`});log('Theme save, rename, duplicate, delete undo, import/export data and invalid-import recovery');
 
- await page.getByLabel('Appearance scope').selectOption('session');
+ await page.getByLabel('Appearance scope',{exact:true}).selectOption('session');
  await page.getByRole('button',{name:/Preview Carbon terminal theme/}).click();await save();
  let saved=await settings();assert(saved.appearance.sessions[host]);
  await page.getByRole('button',{name:/Use inherited/}).click();await page.waitForTimeout(200);saved=await settings();assert(!saved.appearance.sessions[host]);
  await page.screenshot({path:`${artifact}/studio-scope-inheritance.png`});await closeStudio();await run('Write-Output ("STUDIO_HOST="+$relay51)','STUDIO_HOST=5100');assert.equal(await page.locator('.pane-active').getAttribute('data-session'),host);log('Session override Apply/removal and original shell survives Studio edits');
+
+ if(!await page.getByRole('button',{name:'Add workspace'}).count())await page.getByRole('button',{name:'Toggle navigation'}).click();
+ await page.getByRole('button',{name:'Add workspace'}).click();const boot=await native('bootstrap');await page.getByLabel('Workspace name').fill('Appearance Scope Test');await page.getByRole('textbox',{name:'Workspace folder'}).fill(boot.home);await page.getByRole('button',{name:'Pin workspace'}).click();
+ const workspaceRow=page.locator('.workspace-row').filter({hasText:'Appearance Scope Test'});await workspaceRow.waitFor();await workspaceRow.locator('.workspace-open').click();await page.waitForFunction(()=>document.querySelectorAll('.tab').length>=2);
+ const workspaceKey=await page.locator('.pane-active').getAttribute('data-session'),workspaceId=(await settings()).workspaces.find(w=>w.name==='Appearance Scope Test').id;
+ await page.getByRole('button',{name:'Appearance Studio',exact:true}).click();await page.getByLabel('Appearance scope',{exact:true}).selectOption('workspace');await page.getByRole('combobox',{name:'Terminal scheme'}).selectOption('carbon');await save();
+ await page.getByLabel('Appearance scope',{exact:true}).selectOption('session');await page.getByRole('combobox',{name:'Terminal scheme'}).selectOption('frost');await save();saved=await settings();assert.equal(saved.appearance.workspaces[workspaceId].terminalTheme,'carbon');assert.equal(saved.appearance.sessions[workspaceKey].terminalTheme,'frost');
+ await closeStudio();await workspaceRow.click({button:'right'});await page.locator('.quick-appearance').waitFor();assert.equal(await page.getByLabel('Appearance target').inputValue(),'workspace');assert.equal(await page.getByLabel('Quick terminal theme').inputValue(),'carbon');await page.getByText(/This session's override remains active/).waitFor();
+ await page.getByRole('button',{name:'Open full Appearance Studio'}).click();await page.locator('.appearance-studio').waitFor();assert.equal(await page.getByLabel('Appearance scope',{exact:true}).inputValue(),'workspace');assert.equal(await page.getByRole('combobox',{name:'Terminal scheme'}).inputValue(),'carbon');
+ await page.getByLabel('Appearance scope',{exact:true}).selectOption('session');assert.equal(await page.getByRole('combobox',{name:'Terminal scheme'}).inputValue(),'frost');await page.getByRole('button',{name:/Use inherited/}).click();await page.waitForTimeout(200);saved=await settings();assert(!saved.appearance.sessions[workspaceKey]);assert.equal(await page.getByRole('combobox',{name:'Terminal scheme'}).inputValue(),'carbon');
+ await closeStudio();await page.getByRole('button',{name:'Toggle navigation'}).click();log('Workspace Quick/Studio target resolution, session override precedence and inherited return');
 
  await closeStudio();await page.locator('.tab').first().click({button:'right'});await page.locator('.quick-appearance').waitFor();
  assert(await page.getByRole('dialog',{name:/Quick appearance for/}).count());

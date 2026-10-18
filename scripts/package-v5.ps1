@@ -20,7 +20,11 @@ $exeName = "Relay-Terminal_${version}_x64.exe"
 $setupName = "Relay-Terminal_${version}_x64-setup.exe"
 Copy-Item -LiteralPath $exeSource -Destination (Join-Path $release $exeName) -Force
 Copy-Item -LiteralPath $setupSource -Destination (Join-Path $release $setupName) -Force
-$docs = @('README.md','CHANGELOG.md',"RELEASE-NOTES-$($version.Substring(0,3)).md", "TEST-REPORT-$($version.Substring(0,3)).md", 'docs\APPEARANCE-STUDIO.md', 'docs\media\appearance-studio-5.1.png')
+$releaseNotes = "RELEASE-NOTES-$version.md"
+$testReport = "TEST-REPORT-$version.md"
+if (-not (Test-Path -LiteralPath $releaseNotes)) { $releaseNotes = "RELEASE-NOTES-$($version.Substring(0,3)).md" }
+if (-not (Test-Path -LiteralPath $testReport)) { $testReport = "TEST-REPORT-$($version.Substring(0,3)).md" }
+$docs = @('README.md','CHANGELOG.md',$releaseNotes,$testReport,'docs\APPEARANCE-STUDIO.md','docs\media\appearance-studio-5.1.png')
 foreach ($document in $docs) { if (Test-Path -LiteralPath $document -PathType Leaf) { Copy-Item -LiteralPath $document -Destination $release -Force } }
 & (Join-Path $PSScriptRoot 'verify-windows-icons.ps1') -Executable (Join-Path $release $exeName) -Installer (Join-Path $release $setupName)
 $hashes = Get-FileHash -LiteralPath (Join-Path $release $exeName),(Join-Path $release $setupName) -Algorithm SHA256
